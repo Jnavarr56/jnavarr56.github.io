@@ -14,26 +14,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
    pokeball.style.animationDuration = counter + "s";
    counter -= .005;
    console.log(counter);
-   
+
    if (counter < 1) {
-     console.log("hit");
      clearInterval(go);
      pokeball.style.animationDuration = ".1s";
      setTimeout(function flash(){
        document.body.classList.add("flash");
-     }, 500);
-     
-     
-     
-     
+     }, 500);        
    }
    
  }, counter);
 
-  
- 
-  
- 
+ setTimeout(function changePage() {
+   window.location = "mainPage.html";
+ }, 10000); 
 
   
+ 
+  
+
 });
