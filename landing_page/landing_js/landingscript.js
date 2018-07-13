@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
  setTimeout(function changePage() {
    window.location = "mainPage.html";
- }, 10000); 
+ }, 11000); 
 
   
  
