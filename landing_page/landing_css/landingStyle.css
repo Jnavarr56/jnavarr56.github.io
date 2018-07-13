@@ -4,17 +4,15 @@ iframe {
 body {
   height: 100vh;
   width: 100vw;
-  background: url(http://illusion.scene360.com/wp-content/uploads/2013/12/tumblr_mxkl69hTch1qc0s10o1_r1_500.gif);
-  background-size: cover;
-  background-position: center; }
+  background-color: black; }
 
 section {
   height: 700px;
   width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center; }
 
 .container-pokeball {
@@ -66,7 +64,13 @@ section {
     background-color: #f7ffab;
     box-shadow: 0 0 50px gold,0 0 150px gold; } }
 h1 {
-  font-size: 500%; }
+  color: #20C20E;
+  font-size: 185%;
+  position: relative;
+  left: 300px;
+  bottom: 575px;
+  writing-mode: vertical-rl;
+  text-orientation: upright; }
 
 .flash {
   animation: flash 3s linear 0s 1 forwards; }
