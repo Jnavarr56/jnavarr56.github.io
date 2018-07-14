@@ -35,9 +35,15 @@ $("#searchform").submit(function(event){
         function(result) {
             console.log(result);
             
-
             console.log(result.name + " is a " + result.types[0].type.name + "type pokemon.");
             katherine.say(result.name + " is a " + result.types[0].type.name + "type pokemon.");
+
+
+            $("#screen").css("background", `rgba(0,0,0,.2 ) url(${result.sprites.front_default}) no-repeat center`);
+            $("#screen").css("background-size", "250px 250px");
+
+
+            
 
         }
     ).fail(function(result){

@@ -158,6 +158,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  background-size: 250px;
   height: 270px;
   width: 320px;
   min-width: 320px; }
