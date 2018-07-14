@@ -2,10 +2,10 @@ const katherine = new Artyom();
 katherine.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
 
 
-
 $(document).ready(function(){
+    $("#inputsearch").focus();
     setTimeout(function() {
-        $("body").css("background", "linear-gradient(to top left,#190a05, #600000 35%, #190a05)");
+        $("body").css("background", " linear-gradient(152deg, rgba(2,0,36,1) 0%, rgba(0,53,64,1) 39%, rgba(121,9,9,1) 81%)");
     }, 500);
     navigator.geolocation.getCurrentPosition(
         function sucess(pos) {
@@ -29,8 +29,6 @@ $("#searchform").submit(function(event){
     event.preventDefault();
 
 
-    
-
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon/" + $("#inputsearch").val().toLowerCase()
     }).done(
@@ -42,7 +40,9 @@ $("#searchform").submit(function(event){
             katherine.say(result.name + " is a " + result.types[0].type.name + "type pokemon.");
 
         }
-    );
+    ).fail(function(result){
+        alert("This is not a known Pokemon.");
+    });
    
 
 

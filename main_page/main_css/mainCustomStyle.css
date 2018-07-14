@@ -1,6 +1,9 @@
 @font-face {
   font-family: "exans";
   src: url("main_fonts/Exan-Regular.ttf") format("truetype"); }
+*:focus {
+  outline: none; }
+
 #indexed {
   font-family: "exans";
   font-size: 200%;
@@ -17,7 +20,8 @@ body {
   background: white;
   opacity: 0;
   animation: fadeIn 1s linear 0s 1 forwards;
-  min-width: 1140px; }
+  min-width: 1140px;
+  overflow: hidden; }
 
 iframe {
   display: none; }
@@ -45,8 +49,10 @@ input {
   width: 90%;
   border-radius: 5px;
   margin: 20px;
-  background: rgba(255, 255, 255, 0.15);
-  border: none; }
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  color: rgba(32, 194, 14, 0.7);
+  font-family: exans; }
 
 form {
   width: 100%;
@@ -77,14 +83,15 @@ button {
   left: 230px;
   height: 90px;
   width: 100%;
+  min-width: 1120px;
   display: flex;
   align-items: center;
   justify-content: flex-start; }
 
 #userstats {
   font-family: "exans";
-  color: white;
-  font-size: 100%; }
+  color: rgba(32, 194, 14, 0.8);
+  font-size: 90%; }
 
 .main {
   height: 800px;
@@ -93,7 +100,9 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-end; }
+
+.main:hover {
   border-style: dashed; }
 
 #sec1 {
@@ -113,7 +122,6 @@ button {
 #userData {
   overflow: hidden;
   height: 30px;
-  color: white;
   font-size: 100%;
   height: 100%;
   display: flex;
@@ -124,34 +132,14 @@ button {
   padding-left: 10px; }
 
 .userDataLoaded {
-  animation: writingUserData 7s steps(123) 0s 1 forwards, writingUserDataFlash 0.25s steps(4) 7s 2 forwards, writingUserDataRestore 0.01s steps(1) 7.25s 1 forwards; }
+  animation: writingUserData 5s linear 1 forwards, writingUserDataFlash 0.25s steps(4) 5s 2 forwards, writingUserDataRestore 0.01s steps(1) 5.25s 1 forwards; }
 
 @keyframes writingUserData {
   0% {
-    width: 0%;
-    border-right-style: none; }
-  10% {
-    border-right-style: solid; }
-  20% {
-    border-right-style: none; }
-  30% {
-    border-right-style: solid; }
-  40% {
-    border-right-style: none; }
-  50% {
-    border-right-style: solid; }
-  60% {
-    border-right-style: none; }
-  70% {
-    border-right-style: solid; }
-  80% {
-    border-right-style: none; }
-  90% {
-    border-right-style: solid; }
+    width: 0; }
   100% {
-    width: 100%;
-    min-width: 1125px;
-    border-right-style: none; } }
+    width: 1140px;
+    min-width: 1140px; } }
 @keyframes writingUserDataFlash {
   0% {
     opacity: 1; }
@@ -161,12 +149,7 @@ button {
     opacity: 1; } }
 @keyframes writingUserDataRestore {
   100% {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    text-shadow: 0 0 80px gold, 0 0 180px gold, 0 0 90px gold, 0 0 180px gold;
-    position: absolute;
-    padding: 30px 5px; } }
+    text-shadow: 0 0 80px gold, 0 0 180px gold, 0 0 90px gold, 0 0 180px gold; } }
 #screen {
   height: 60%;
   width: 30%;
@@ -182,7 +165,7 @@ button {
 .horizontal {
   height: 1px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(32, 194, 14, 0.5);
   display: flex;
   justify-content: space-evenly; }
 
@@ -192,7 +175,7 @@ button {
   align-items: flex-start;
   height: 27000%;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(32, 194, 14, 0.5);
   position: relative;
   bottom: 25px; }
 

@@ -4,7 +4,10 @@
     src: url('main_fonts/Exan-Regular.ttf') format('truetype');
 }
 
-
+*:focus {
+    outline: none;
+  } 
+  
 #indexed {
     font-family: "exans";
     font-size: 200%;
@@ -30,6 +33,8 @@ body {
     animation: fadeIn 1s linear 0s 1 forwards;
 
     min-width: 1140px;
+
+    overflow: hidden;
     
 }
 
@@ -72,10 +77,19 @@ input {
 
     margin: 20px;
 
-    background: rgba(255, 255, 255, .15);
+    background: rgba(0, 0, 0, .8);
     border: none;
 
+    color: rgba(32, 194, 14, .7);
+
+    font-family: exans;
+    
+
+    
 }
+
+
+
 
 form {
     width: 100%;
@@ -125,6 +139,8 @@ button {
     height: 90px;
     width: 100%;
 
+    min-width: 1120px;
+
    
    
     
@@ -136,8 +152,10 @@ button {
 #userstats {
     font-family: "exans";
 
-    color: rgba(255, 255, 255,1);
-    font-size: 100%;
+    color: rgba(32, 194, 14, .8);
+    font-size: 90%;
+
+    
 
     
 }
@@ -157,6 +175,12 @@ button {
     justify-content: center;
     align-items: flex-end;
 
+
+
+    
+}
+
+.main:hover {
     border-style: dashed;
 }
 
@@ -188,7 +212,7 @@ button {
     
 
     height: 30px;
-    color: white;
+    
 
     font-size: 100%;
 
@@ -204,35 +228,21 @@ button {
 
     padding-left: 10px;
 
-
-
-    
-    
-
     
 
 
-
-
-    
 
 
 }
 .userDataLoaded {
-    animation: writingUserData 7s steps(123) 0s 1 forwards, writingUserDataFlash .25s steps(4) 7s 2 forwards, writingUserDataRestore .01s steps(1) 7.25s 1 forwards;
+    animation: writingUserData 5s linear 1 forwards, writingUserDataFlash .25s steps(4) 5s 2 forwards, writingUserDataRestore .01s steps(1) 5.25s 1 forwards;
 }    
 @keyframes writingUserData {
-    0% {width: 0%; border-right-style:none;}
-    10% {border-right-style: solid;}
-    20% {border-right-style: none;}
-    30% {border-right-style: solid;}
-    40% {border-right-style: none;}
-    50% {border-right-style: solid;}
-    60% {border-right-style: none;}
-    70% {border-right-style: solid;}
-    80% {border-right-style: none;}
-    90% {border-right-style: solid;}
-    100% {width: 100%; min-width: 1125px;  border-right-style: none;}
+    0% {width: 0;}
+    100% {width: 1140px; min-width: 1140px;}
+        
+         
+    
 }
 @keyframes writingUserDataFlash {
     0% {opacity: 1;}
@@ -242,18 +252,9 @@ button {
 
 @keyframes writingUserDataRestore {
     100% {
-
-        display: flex;
-        align-items: center;
-        height: 100%;
         text-shadow:
         0 0 80px gold, 0 0 180px gold,
         0 0 90px gold, 0 0 180px gold;
-
-        position: absolute;
-      
-
-        padding: 30px 5px;
 
     }
         
@@ -289,7 +290,7 @@ button {
 .horizontal {
     height: 1px;
     width: 100%;
-    background-color: rgba(255,255,255, .05);
+    background-color: rgba(32, 194, 14, .5);
     display: flex;
     justify-content: space-evenly;
 
@@ -301,10 +302,13 @@ button {
 
     height: 27000%;
     width: 1px;
-    background-color: rgba(255,255,255, .05);
+    background-color: rgba(32, 194, 14, .5);
 
     position: relative;
     bottom: 25px;
+
+    
+
 
 }
 
