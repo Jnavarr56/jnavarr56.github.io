@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="main_page/main_css/mainCustomStyle.css"  type="text/css">
+    
     <title>Pokdex Unit 5072</title>
   </head>
 
@@ -17,21 +18,65 @@
       <iframe src ="main_page/main_audio/justLoaded.mp3" allow="autoplay"></iframe>
       <iframe src ="main_page/main_audio/backgroundSound.mp3" allow="autoplay"></iframe>
     
-    <div class = "container-fluid top">
-      <div class = "realtop"><p id="userstats">accessing user data</p></div>
+    <div class = "top">
+      <div class = "realtop"><div id="userData"><p id="userstats">accessing user data</p></div></div>
 
       <div class = "side">
-        <h1 id = "indexed" >Indexed Pokemon</h1>
-        <div class = "pokemonselector"><h1 class ="sidename">Poliwag</h1></div>
-        <div class = "pokemonselector"><h1 class ="sidename">Geodude</h1></div>
-        <div class = "pokemonselector"><h1 class ="sidename"> Vorb</h1></div>
+        <h1 id = "indexed" >Pokemon Search</h1>
+        <div id = "60" class = "pokemonselector">
+          <form id = "searchform">
+            <input id = "inputsearch"></input>
+            
+          </form>
+        </div>
+        
+    
       </div>
     </div>
+
+    <section class = "main container-fluid">
+      <div id = "sec1">
+         
+        <div id = "screen">
+            <div class ="horizontal">
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+                <div class ="vertical"></div>
+            </div>
+          <div class ="horizontal"></div>
+          <div class ="horizontal"></div>
+          <div class ="horizontal"></div>
+          <div class ="horizontal"></div>
+
+
+          <div class ="horizontal"></div>
+          <div class ="horizontal"></div>
+          <div class ="horizontal"></div>
+          <div class ="horizontal"></div>
+        </div>
+      </div>
+
+      <div class = "stats-row"></div>
+
+      <div class = "stats-row"></div>
+
+      <div class = "stats-row"></div>
+    </section>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="artyom-source/artyom.window.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="main_page/main_js/mainScript.js" type="text/javascript"></script>
+    
+
+    
   </body>
 </html>

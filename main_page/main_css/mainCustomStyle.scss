@@ -28,6 +28,9 @@ body {
 
     opacity: 0;
     animation: fadeIn 1s linear 0s 1 forwards;
+
+    min-width: 1140px;
+    
 }
 
 iframe {
@@ -39,8 +42,11 @@ iframe {
 }
 .top {
     height: 90px;
+    min-height: 90px;
+    min-width: 1140px;
    
     background-color:rgba(0,0,0,.2);
+
 
     
 }
@@ -58,18 +64,42 @@ iframe {
     
 
 }
+input {
 
-.pokemonselector {
-    
+    width: 90%;
 
+    border-radius: 5px;
+
+    margin: 20px;
+
+    background: rgba(255, 255, 255, .15);
+    border: none;
+
+}
+
+form {
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    height: 80px;
 
-   
+    
+    position: relative;
+    top: 40px;
 }
+
+button {
+    width: 60%;
+}
+
+
+
+@keyframes blink {
+    100%{color: #20C20E;}
+}
+
+
 .sidename {
     font-family: "exans";
     font-size: 120%;
@@ -92,9 +122,10 @@ iframe {
     position: absolute;
     top: 0;
     left: 230px;
-    height: 10%;
+    height: 90px;
     width: 100%;
 
+   
    
     
     display: flex;
@@ -106,8 +137,184 @@ iframe {
     font-family: "exans";
 
     color: rgba(255, 255, 255,1);
+    font-size: 100%;
 
-    text-shadow:
-    0 0 80px gold, 0 0 180px gold,
-    0 0 90px gold, 0 0 180px gold;
+    
+}
+
+
+
+.main {
+    height: 800px;
+
+    width: 1400px;
+    min-width: 1500px;
+
+ 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    border-style: dashed;
+}
+
+#sec1 {
+    height: 60%;
+    width: 80%;
+
+    display: flex;
+    
+    align-items: center;
+    
+    
+
+}
+.stats-row{
+    height: 15%;
+    width: 80%;
+    
+    
+}
+#pokePic {
+    
+    height: 80%;
+    width: 70%;
+}
+
+#userData {
+    overflow: hidden;
+    
+
+    height: 30px;
+    color: white;
+
+    font-size: 100%;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+    white-space: nowrap;
+
+    position: relative;
+    right: 31px;
+
+
+    padding-left: 10px;
+
+
+
+    
+    
+
+    
+
+
+
+
+    
+
+
+}
+.userDataLoaded {
+    animation: writingUserData 7s steps(123) 0s 1 forwards, writingUserDataFlash .25s steps(4) 7s 2 forwards, writingUserDataRestore .01s steps(1) 7.25s 1 forwards;
+}    
+@keyframes writingUserData {
+    0% {width: 0%; border-right-style:none;}
+    10% {border-right-style: solid;}
+    20% {border-right-style: none;}
+    30% {border-right-style: solid;}
+    40% {border-right-style: none;}
+    50% {border-right-style: solid;}
+    60% {border-right-style: none;}
+    70% {border-right-style: solid;}
+    80% {border-right-style: none;}
+    90% {border-right-style: solid;}
+    100% {width: 100%; min-width: 1125px;  border-right-style: none;}
+}
+@keyframes writingUserDataFlash {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes writingUserDataRestore {
+    100% {
+
+        display: flex;
+        align-items: center;
+        height: 100%;
+        text-shadow:
+        0 0 80px gold, 0 0 180px gold,
+        0 0 90px gold, 0 0 180px gold;
+
+        position: absolute;
+      
+
+        padding: 30px 5px;
+
+    }
+        
+}
+
+#screen {
+    height: 60%;
+    width: 30%;
+
+
+    background: rgba(0,0,0,.2);
+
+    border-radius: 2px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+
+
+    height: 270px;
+
+    width: 320px;
+
+    min-width: 320px;
+
+
+
+}
+
+
+
+.horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(255,255,255, .05);
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.vertical {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    height: 27000%;
+    width: 1px;
+    background-color: rgba(255,255,255, .05);
+
+    position: relative;
+    bottom: 25px;
+
+}
+
+
+img {
+    height: 200px;
+    width: 200px;
+
+    position: relative;
+    left: 24%;
+
+    z-index: 3;
 }
