@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="main_page/main_css/mainCustomStyle.css"  type="text/css">
     
+    
     <title>Pokdex Unit 5072</title>
   </head>
 
@@ -53,16 +54,50 @@
           <div class ="horizontal"></div>
           <div class ="horizontal"></div>
           <div class ="horizontal"></div>
-
-
           <div class ="horizontal"></div>
           <div class ="horizontal"></div>
           <div class ="horizontal"></div>
           <div class ="horizontal"></div>
         </div>
+
+        <div id = "stats-box-floating-master">
+          <div id = "speaking" class = "stats-box-floating">
+            <div class = "soundwave-container">
+              <div class = "soundwave" id = "s1"></div>
+              <div class = "soundwave" id = "s2"></div>
+              <div class = "soundwave" id = "s3"></div>
+              <div class = "soundwave" id = "s4"></div>
+              <div class = "soundwave" id = "s5"></div>
+              <div class = "soundwave" id = "s6"></div>
+            </div>
+          </div>
+
+          <div id = "hp" class = "stats-box-floating">
+              <p class="bar-label">HP</p>
+              <div id = "hp-bar"> 
+                  <div id = "hpbar"><p id = "hpbarText"></p></div>
+              </div>
+          </div>          
+
+          <div id = "attack" class = "stats-box-floating">
+            <p class="bar-label">ATK</p>
+            <div id = "attack-bar"> 
+                <div id = "abar"><p id = "abarText"></p></div>
+            </div>
+          </div>
+          <div id = "defense" class = "stats-box-floating">
+            <p class = "bar-label">DEF</p>
+            <div id = "defense-bar"> 
+              <div id = "dbar"><p id = "dbarText"></p></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class = "stats-row"></div>
+      <div class = "stats-row">
+        <h1 id = "abilities-header"></h1>
+        <div id = "abilities-holder"></div>
+      </div>
 
       <div class = "stats-row"></div>
 
@@ -70,11 +105,14 @@
     </section>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
     <script src="artyom-source/artyom.window.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="main_page/main_js/mainScript.js" type="text/javascript"></script>
+    
     
 
     

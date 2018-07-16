@@ -180,24 +180,28 @@ button {
     
 }
 
-.main:hover {
-    border-style: dashed;
-}
+
 
 #sec1 {
     height: 60%;
     width: 80%;
 
     display: flex;
+    justify-content: space-evenly;
     
     align-items: center;
     
     
-
 }
 .stats-row{
     height: 15%;
     width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
     
     
 }
@@ -233,7 +237,7 @@ button {
 
 }
 .userDataLoaded {
-    animation: writingUserData 5s linear 1 forwards, writingUserDataFlash .25s steps(4) 5s 2 forwards, writingUserDataRestore .01s steps(1) 5.25s 1 forwards;
+    animation: writingUserData 5s linear 0s 1 forwards, writingUserDataFlash .25s steps(4) 2.5s 2 forwards, writingUserDataRestore .01s steps(1) 2.75s 1 forwards;
 }    
 @keyframes writingUserData {
     0% {width: 0;}
@@ -243,7 +247,6 @@ button {
     
 }
 @keyframes writingUserDataFlash {
-    0% {opacity: 1;}
     50% {opacity: 0;}
     100% {opacity: 1;}
 }
@@ -271,7 +274,7 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
     
-    background-size: 250px;
+    
 
 
     height: 270px;
@@ -321,4 +324,211 @@ img {
     left: 24%;
 
     z-index: 3;
+}
+
+#stats-box-floating-master {
+    height: 70%;
+    width: 45%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    
+
+}
+
+.stats-box-floating {
+
+    height: 20%;
+    width: 80%;
+
+
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-row {
+    background-color:rgba(0,0,0,.2);
+    margin: 10px 0;
+
+    position: relative;
+    right: 60px;
+    bottom: 10px;
+
+ 
+
+}
+
+p {
+    color: green;
+}
+
+.soundwave-container {
+    height: 80%;
+    width: 40%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.soundwave {
+    height: 15%;
+    width: 10%;
+
+    background-color: rgb(32, 194, 14);
+}
+.soundwaveWaving {
+    animation: waving .25s linear 0s infinite;
+}
+#s2 {
+    animation-delay: .05s;
+}
+#s3 {
+    animation-delay: .10;
+}
+#s4 {
+    animation-delay: .15s;
+}
+#s5 {
+    animation-delay: .20s;
+}
+#s6 {
+    animation-delay: .25s;
+}
+@keyframes waving {
+    50% {height: 30%}
+    100% {height: 60%}
+}
+
+
+
+
+
+.bar-label {
+    transform: rotate(-90deg);
+    position: relative;
+    top: 7px;
+    color: rgb(32, 194, 14);
+}
+#speaking {
+    background-color:rgba(0,0,0,.2);
+    width: 40%;
+    position: relative;
+    left: 120px;
+
+}
+
+#defense {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    #defense-bar{
+        height: 60%;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-style: solid;
+        border-color: black;
+        border-radius: 15px;     
+        overflow: hidden;
+        #dbar {
+            height: 105%;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10px;
+            #dbarText {
+                font-family: "exans";
+                color: black;
+                transition: width 10s;
+            }
+        }
+    }
+}
+
+#attack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    #attack-bar{
+        height: 60%;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-style: solid;
+        border-color: black;
+        border-radius: 15px;     
+        overflow: hidden;
+        #abar {
+            height: 105%;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10px;
+            #abarText {
+                font-family: "exans";
+                color: black;
+                transition: width 10s;
+            }
+        }
+    }
+}
+
+#hp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    #hp-bar{
+        height: 60%;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-style: solid;
+        border-color: black;
+        border-radius: 15px;     
+        overflow: hidden;
+        #hpbar {
+            height: 105%;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10px;
+            #hpbarText {
+                font-family: "exans";
+                color: black;
+                transition: width 10s;
+            }
+        }
+    }
+}
+
+#abilities-header {
+    font-family: "exans";
+    color: rgb(32, 194, 14);
+
+    position: absolute;
+    top: 0;
+    left: 5px;
+
+    font-size: 100%;
+}
+#abilities-holder {
+    height: 80%;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    font-family: "exans";
 }
