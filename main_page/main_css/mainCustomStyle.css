@@ -18,6 +18,7 @@ body {
   height: 100vh;
   width: 100vw;
   background: white;
+  background-size: 100%;
   opacity: 0;
   animation: fadeIn 1s linear 0s 1 forwards;
   min-width: 1140px;
@@ -273,16 +274,17 @@ p {
     border-radius: 15px;
     overflow: hidden; }
     #defense #defense-bar #dbar {
-      height: 105%;
-      background-color: red;
+      height: 125%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 10px; }
+      padding-top: 10px;
+      overflow: visible; }
       #defense #defense-bar #dbar #dbarText {
         font-family: "exans";
         color: black;
-        transition: width 10s; }
+        transition: width 10s;
+        z-index: 2; }
 
 #attack {
   display: flex;
@@ -299,16 +301,17 @@ p {
     border-radius: 15px;
     overflow: hidden; }
     #attack #attack-bar #abar {
-      height: 105%;
-      background-color: red;
+      height: 125%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 10px; }
+      padding-top: 10px;
+      overflow: visible; }
       #attack #attack-bar #abar #abarText {
         font-family: "exans";
         color: black;
-        transition: width 10s; }
+        transition: width 10s;
+        z-index: 2; }
 
 #hp {
   display: flex;
@@ -325,18 +328,19 @@ p {
     border-radius: 15px;
     overflow: hidden; }
     #hp #hp-bar #hpbar {
-      height: 105%;
-      background-color: red;
+      height: 125%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 10px; }
+      padding-top: 10px;
+      overflow: visible; }
       #hp #hp-bar #hpbar #hpbarText {
         font-family: "exans";
         color: black;
-        transition: width 10s; }
+        transition: width 10s;
+        z-index: 2; }
 
-#abilities-header {
+.header {
   font-family: "exans";
   color: #20c20e;
   position: absolute;
@@ -344,12 +348,45 @@ p {
   left: 5px;
   font-size: 100%; }
 
-#abilities-holder {
+.holder {
   height: 80%;
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   font-family: "exans"; }
+
+#dimensions-display1 {
+  font-family: "exans";
+  color: #20c20e; }
+
+#dimensions-display2 {
+  font-family: "exans";
+  color: #20c20e; }
+
+.bar {
+  height: 100%;
+  overflow: hidden; }
+
+.loading-stats {
+  animation: loading 3s ease 0s 1 forwards; }
+
+@keyframes loading {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
+#dimensions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; }
+
+.bar-background {
+  background-color: white; }
+
+#export {
+  position: relative;
+  top: 75px;
+  left: 35px; }
 
 /*# sourceMappingURL=mainCustomStyle.css.map */

@@ -29,6 +29,7 @@
             <input id = "inputsearch"></input>
             
           </form>
+          <button id = "export">EXPORT TO CSV</button>
         </div>
         
     
@@ -74,34 +75,50 @@
 
           <div id = "hp" class = "stats-box-floating">
               <p class="bar-label">HP</p>
-              <div id = "hp-bar"> 
-                  <div id = "hpbar"><p id = "hpbarText"></p></div>
+              <div id = "hp-bar" class = "bar-background"> 
+                <div class= "bar" id = "hpMaxer">  
+                    <div id = "hpbar"><p id = "hpbarText"></p></div>
+                </div>  
               </div>
           </div>          
 
           <div id = "attack" class = "stats-box-floating">
             <p class="bar-label">ATK</p>
-            <div id = "attack-bar"> 
-                <div id = "abar"><p id = "abarText"></p></div>
+            <div id = "attack-bar" class = "bar-background"> 
+                <div class= "bar" id = "aMaxer"> 
+                  <div id = "abar"><p id = "abarText"></p></div>
+                </div>
             </div>
           </div>
           <div id = "defense" class = "stats-box-floating">
             <p class = "bar-label">DEF</p>
-            <div id = "defense-bar"> 
-              <div id = "dbar"><p id = "dbarText"></p></div>
+            <div id = "defense-bar" class = "bar-background"> 
+              <div class= "bar" id = "dMaxer"> 
+                <div id = "dbar"><p id = "dbarText"></p></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class = "stats-row">
-        <h1 id = "abilities-header"></h1>
-        <div id = "abilities-holder"></div>
+        <h1 class = "header" id = "abilities-header"></h1>
+        <div class = "holder" id = "abilities-holder"></div>
       </div>
 
-      <div class = "stats-row"></div>
+      <div class = "stats-row">
+        <h1  class = "header" id = "other-stats-header"></h1>
+        <div class = "holder" id = "other-stats-holder"></div>
+      </div>
 
-      <div class = "stats-row"></div>
+
+
+      <div class = "stats-row" id = "dimensions">
+        <h1 id = "dimensions-display1"></h1>
+        <h1 id = "dimensions-display2"></h1>
+      </div>
+
+
     </section>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
