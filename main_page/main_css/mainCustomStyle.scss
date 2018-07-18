@@ -155,10 +155,26 @@ button {
 
     position: relative;
     border-radius: 15px;
-}
-#pokePic {
-    height: 80%;
-    width: 70%;
+    .header {
+        font-family: "exans";
+        font-size: 100%;
+    
+        color: $hacker-green-no-opacity-feature;
+    
+        position: absolute;
+        top: 0;
+        left: 5px;
+    }
+    .holder {
+        height: 80%;
+        width: 80%;
+    
+        font-family: "exans";
+    
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
 }
 #userData {
     height: 100%;
@@ -252,7 +268,7 @@ button {
     bottom: 10px;
 }
 p {
-    color: green;
+    color: $hacker-green-no-opacity-feature;
 }
 .soundwave-container {
     height: 80%;
@@ -387,34 +403,8 @@ p {
         }
     }
 }
-.header {
-    font-family: "exans";
-    font-size: 100%;
 
-    color: $hacker-green-no-opacity-feature;
 
-    position: absolute;
-    top: 0;
-    left: 5px;
-}
-.holder {
-    height: 80%;
-    width: 80%;
-
-    font-family: "exans";
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-#dimensions-display1 {
-    font-family: "exans";
-    color: $hacker-green-no-opacity-feature;
-}
-#dimensions-display2 {
-    font-family: "exans";
-    color: $hacker-green-no-opacity-feature;
-}
 .bar {
     height: 100%;
     overflow: hidden;
@@ -431,6 +421,10 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    h1 {
+        font-family: "exans";
+        color: $hacker-green-no-opacity-feature;
+    }
 }
 .bar-background {
     background-color: white;
@@ -481,6 +475,26 @@ p {
     flex-direction: column;
 
     overflow: scroll;
+    div {
+        height: 5%;
+        width: 80%;
+    
+        background-color: rgba(0, 0, 0, .2);
+    
+        border-radius: 0 0 15px 15px;
+        margin: 0 auto;
+    
+        display: flex;
+        justify-content: center;
+    
+        position: absolute;
+        top: 0;
+        p {
+            font-family: "exans";
+            color: white;
+            @include textShadowA();
+        }
+    }
 }
 .pokemonSelected {
     @include displayFlexCenterAll();
@@ -501,26 +515,7 @@ p {
 .deindex {
     color: red;
 }
-#countbox {
-    height: 5%;
-    width: 80%;
 
-    background-color: rgba(0, 0, 0, .2);
-
-    border-radius: 0 0 15px 15px;
-    margin: 0 auto;
-
-    display: flex;
-    justify-content: center;
-
-    position: absolute;
-    top: 0;
-    p {
-        font-family: "exans";
-        color: white;
-        @include textShadowA();
-    }
-}
 #clear{
     font-family: "exans";
     color: $hacker-green-no-opacity-feature;

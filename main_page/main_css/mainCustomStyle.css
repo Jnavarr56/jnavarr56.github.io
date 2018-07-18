@@ -121,10 +121,20 @@ button {
   align-items: center;
   position: relative;
   border-radius: 15px; }
-
-#pokePic {
-  height: 80%;
-  width: 70%; }
+  .stats-row .header {
+    font-family: "exans";
+    font-size: 100%;
+    color: #20C20E;
+    position: absolute;
+    top: 0;
+    left: 5px; }
+  .stats-row .holder {
+    height: 80%;
+    width: 80%;
+    font-family: "exans";
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; }
 
 #userData {
   height: 100%;
@@ -205,7 +215,7 @@ button {
   bottom: 10px; }
 
 p {
-  color: green; }
+  color: #20C20E; }
 
 .soundwave-container {
   height: 80%;
@@ -336,30 +346,6 @@ p {
         transition: width 10s;
         z-index: 2; }
 
-.header {
-  font-family: "exans";
-  font-size: 100%;
-  color: #20C20E;
-  position: absolute;
-  top: 0;
-  left: 5px; }
-
-.holder {
-  height: 80%;
-  width: 80%;
-  font-family: "exans";
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly; }
-
-#dimensions-display1 {
-  font-family: "exans";
-  color: #20C20E; }
-
-#dimensions-display2 {
-  font-family: "exans";
-  color: #20C20E; }
-
 .bar {
   height: 100%;
   overflow: hidden; }
@@ -376,6 +362,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-evenly; }
+  #dimensions h1 {
+    font-family: "exans";
+    color: #20C20E; }
 
 .bar-background {
   background-color: white; }
@@ -416,6 +405,20 @@ p {
   align-items: center;
   flex-direction: column;
   overflow: scroll; }
+  #indexedPokemon div {
+    height: 5%;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 15px 15px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0; }
+    #indexedPokemon div p {
+      font-family: "exans";
+      color: white;
+      text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold; }
 
 .pokemonSelected {
   display: flex;
@@ -434,21 +437,6 @@ p {
 
 .deindex {
   color: red; }
-
-#countbox {
-  height: 5%;
-  width: 80%;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 15px 15px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 0; }
-  #countbox p {
-    font-family: "exans";
-    color: white;
-    text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold; }
 
 #clear {
   font-family: "exans";
