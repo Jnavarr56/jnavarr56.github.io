@@ -119,7 +119,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; }
+  position: relative;
+  border-radius: 15px; }
 
 #pokePic {
   height: 80%;
@@ -261,7 +262,8 @@ p {
   background-color: rgba(0, 0, 0, 0.2);
   width: 40%;
   position: relative;
-  left: 120px; }
+  left: 120px;
+  border-radius: 15px; }
 
 #defense {
   display: flex;

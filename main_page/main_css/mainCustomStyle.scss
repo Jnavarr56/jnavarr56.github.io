@@ -194,6 +194,8 @@ button {
     justify-content: center;
 
     position: relative;
+
+    border-radius: 15px;
     
     
 }
@@ -408,6 +410,7 @@ p {
     width: 40%;
     position: relative;
     left: 120px;
+    border-radius: 15px;
 
 }
 
@@ -427,13 +430,11 @@ p {
         overflow: hidden;
         #dbar {
             height: 125%;
-            
             display: flex;
             justify-content: center;
             align-items: center;
             padding-top: 10px;
             overflow: visible;
-            
             #dbarText {
                 font-family: "exans";
                 color: black;
