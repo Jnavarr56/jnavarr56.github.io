@@ -80,80 +80,48 @@ button {
     font-family: "exans";
     font-size: 120%;
     color: rgba(255, 255, 255,1);
-
-    position: relative;
-    top: 10px;
-
-  
     text-shadow:
     0 0 80px gold, 0 0 180px gold,
     0 0 90px gold, 0 0 180px gold;
 
-
- 
-    
+    position: relative;
+    top: 10px;   
 }   
-
 .realtop {
+    height: 90px;
+    width: 100%;
+    min-width: 1120px;
+
     position: absolute;
     top: 0;
     left: 230px;
-    height: 90px;
-    width: 100%;
 
-    min-width: 1120px;
-
-   
-   
-    
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
-
 #userstats {
     font-family: "exans";
-
-    color: rgba(32, 194, 14, .8);
     font-size: 90%;
-
-    
-
-    
+    color: rgba(32, 194, 14, .8);
 }
-
-
-
 .main {
     height: 800px;
-
     width: 1400px;
     min-width: 1500px;
 
- 
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-
-
-
-    
+    align-items: flex-end; 
 }
-
-
-
 #sec1 {
     height: 60%;
     width: 80%;
 
     display: flex;
     justify-content: space-evenly;
-    
     align-items: center;
-    
-    
 }
 .stats-row{
     height: 15%;
@@ -164,13 +132,9 @@ button {
     justify-content: center;
 
     position: relative;
-
     border-radius: 15px;
-    
-    
 }
 #pokePic {
-    
     height: 80%;
     width: 70%;
 }
@@ -195,10 +159,6 @@ button {
 
 
     padding-left: 10px;
-
-    
-
-
 }
 .userDataLoaded {
     animation: writingUserData 5s linear 0s 1 forwards, writingUserDataFlash .25s steps(4) 2.5s 2 forwards, writingUserDataRestore .01s steps(1) 2.75s 1 forwards;

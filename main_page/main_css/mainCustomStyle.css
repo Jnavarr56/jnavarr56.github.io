@@ -77,25 +77,25 @@ button {
   font-family: "exans";
   font-size: 120%;
   color: white;
+  text-shadow: 0 0 80px gold, 0 0 180px gold, 0 0 90px gold, 0 0 180px gold;
   position: relative;
-  top: 10px;
-  text-shadow: 0 0 80px gold, 0 0 180px gold, 0 0 90px gold, 0 0 180px gold; }
+  top: 10px; }
 
 .realtop {
-  position: absolute;
-  top: 0;
-  left: 230px;
   height: 90px;
   width: 100%;
   min-width: 1120px;
+  position: absolute;
+  top: 0;
+  left: 230px;
   display: flex;
   align-items: center;
   justify-content: flex-start; }
 
 #userstats {
   font-family: "exans";
-  color: rgba(32, 194, 14, 0.8);
-  font-size: 90%; }
+  font-size: 90%;
+  color: rgba(32, 194, 14, 0.8); }
 
 .main {
   height: 800px;
