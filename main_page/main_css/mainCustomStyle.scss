@@ -25,7 +25,6 @@ $hacker-green-no-opacity-feature: #20C20E;
 @mixin hackerGreenBackground($opacity-setting) {
     background-color: rgba(32, 194, 14, $opacity-setting);
 }
-
 *:focus {
     outline: none;
 } 
@@ -403,8 +402,6 @@ p {
         }
     }
 }
-
-
 .bar {
     height: 100%;
     overflow: hidden;
@@ -416,7 +413,6 @@ p {
     0% {width: 0%;}
     100% {width: 100%;}
 }
-
 #dimensions {
     display: flex;
     align-items: center;
@@ -515,7 +511,6 @@ p {
 .deindex {
     color: red;
 }
-
 #clear{
     font-family: "exans";
     color: $hacker-green-no-opacity-feature;
