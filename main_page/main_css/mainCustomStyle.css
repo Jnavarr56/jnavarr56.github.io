@@ -127,16 +127,15 @@ button {
   width: 70%; }
 
 #userData {
-  overflow: hidden;
-  height: 30px;
-  font-size: 100%;
   height: 100%;
+  font-size: 100%;
+  padding-left: 10px;
+  position: relative;
+  right: 31px;
   display: flex;
   align-items: center;
   white-space: nowrap;
-  position: relative;
-  right: 31px;
-  padding-left: 10px; }
+  overflow: hidden; }
 
 .userDataLoaded {
   animation: writingUserData 5s linear 0s 1 forwards, writingUserDataFlash 0.25s steps(4) 2.5s 2 forwards, writingUserDataRestore 0.01s steps(1) 2.75s 1 forwards; }
@@ -156,18 +155,15 @@ button {
   100% {
     text-shadow: 0 0 80px gold, 0 0 180px gold, 0 0 90px gold, 0 0 180px gold; } }
 #screen {
-  height: 60%;
-  width: 30%;
-  position: relative;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   height: 270px;
   width: 320px;
   min-width: 320px;
-  border-radius: 15px; }
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
 
 .horizontal {
   height: 1px;
@@ -185,13 +181,6 @@ button {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start; }
-
-img {
-  height: 200px;
-  width: 200px;
-  position: relative;
-  left: 24%;
-  z-index: 3; }
 
 #stats-box-floating-master {
   height: 70%;
@@ -254,17 +243,17 @@ p {
   100% {
     height: 60%; } }
 .bar-label {
+  color: #20c20e;
   transform: rotate(-90deg);
   position: relative;
-  top: 7px;
-  color: #20c20e; }
+  top: 7px; }
 
 #speaking {
-  background-color: rgba(0, 0, 0, 0.2);
   width: 40%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
   position: relative;
-  left: 120px;
-  border-radius: 15px; }
+  left: 120px; }
 
 #defense {
   display: flex;
@@ -349,19 +338,19 @@ p {
 
 .header {
   font-family: "exans";
+  font-size: 100%;
   color: #20c20e;
   position: absolute;
   top: 0;
-  left: 5px;
-  font-size: 100%; }
+  left: 5px; }
 
 .holder {
   height: 80%;
   width: 80%;
+  font-family: "exans";
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  font-family: "exans"; }
+  justify-content: space-evenly; }
 
 #dimensions-display1 {
   font-family: "exans";
@@ -392,41 +381,41 @@ p {
   background-color: white; }
 
 #export {
+  font-family: "exans";
+  color: #20c20e;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  border-style: none;
   position: relative;
   top: 32.5px;
-  left: 35px;
-  font-family: "exans";
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-style: none;
-  color: #20c20e; }
+  left: 35px; }
 
 #index {
+  font-family: "exans";
+  color: #20c20e;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  border-style: none;
   margin: 10px 0;
   position: absolute;
   top: 0;
   left: 10px;
-  z-index: 10;
-  font-family: "exans";
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-style: none;
-  color: #20c20e; }
+  z-index: 10; }
 
 #indexedPokemon {
   height: 500px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
   border-radius: 15px;
+  border-style: solid;
   position: relative;
   top: 50px;
-  overflow: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.5); }
+  overflow: scroll; }
 
 .pokemonSelected {
   display: flex;
@@ -447,28 +436,28 @@ p {
   color: red; }
 
 #countbox {
-  position: absolute;
-  top: 0;
-  margin: 0 auto;
   height: 5%;
   width: 80%;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0 0 15px 15px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  position: absolute;
+  top: 0; }
   #countbox p {
     font-family: "exans";
     color: white;
     text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold; }
 
 #clear {
+  font-family: "exans";
+  color: #20c20e;
+  background-color: rgba(0, 0, 0, 0.4);
   position: relative;
   top: 70px;
   left: 35px;
-  font-family: "exans";
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-style: none;
-  color: #20c20e; }
+  border-style: none; }
 
 /*# sourceMappingURL=mainCustomStyle.css.map */
