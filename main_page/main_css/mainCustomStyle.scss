@@ -463,9 +463,9 @@ p {
     
     @include displayFlexCenterAll();
     flex-direction: column;
-
+    
     overflow: scroll;
-    div {
+    #countbox {
         height: 5%;
         width: 80%;
     

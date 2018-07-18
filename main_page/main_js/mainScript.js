@@ -58,7 +58,7 @@ let trainerObj = new TrainerClass(pokeArray);
 let getPokeBio = (pokemonname) => {
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-species/" + pokemonname
-    }).done(function(result){
+    }).done((result)=>{
         var factHolder = [];
         result.flavor_text_entries.forEach(element=>{
             if (element.language.name === "en") {
@@ -71,36 +71,36 @@ let getPokeBio = (pokemonname) => {
             katherine.say(
                 element,
                 {
-                onStart:function(){
+                onStart:()=>{
                     $(".soundwave").addClass("soundwaveWaving");
                 },
-                onEnd:function() {
+                onEnd:()=> {
                     $(".soundwave").removeClass("soundwaveWaving");
                 }
                 });
         });
-    }).fail(function(result) {
+    }).fail((result)=> {
         console.log("not working");
     });
 }
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*-----------------------------------------------------ON LOAD: SET OPACITY ANIMATION, BODY COLOR, INNERTEXT GEOLOCATION -------------------------------------*/
-$(document).ready(function(){
+$(document).ready(()=>{
     katherine.shutUp();
     $("#inputsearch").focus();
-    setTimeout(function() {
+    setTimeout(()=> {
         $("body").css("background", " linear-gradient(152deg, rgba(2,0,36,1) 0%, rgba(0,53,64,1) 39%, rgba(121,9,9,1) 81%)");
     }, 500);
     navigator.geolocation.getCurrentPosition(
-        function sucess(pos) {
+        sucess = (pos) => {
            var lat = pos.coords.latitude;
            var long = pos.coords.longitude;
            dateObj = new Date();
            $("#userstats").text(`USER LOCATION {lat: ${lat} long: ${long}} DATE ACCESSED {${dateObj}}`);
            $("#userData").addClass("userDataLoaded");           
         },
-        function error(err) {
+        error = (err) => {
             dateObj = new Date();
             $("#userstats").text(`USER LOCATION {permission not granted} DATE ACCESSED {${dateObj}}`);
             $("#userData").addClass("userDataLoaded");
@@ -208,8 +208,8 @@ class PokemonClass {
         $.ajax({
             url: "https://pokeapi.co/api/v2/pokemon/" + this.pokemonName
         }).done(
-            function(result) {
-                console.log(`${self.pokemonName.charAt(0).toUpperCase() + self.pokemonName.slice(1)} API Object:`);
+            (result)=> {
+                console.log(`${result.species.name.charAt(0).toUpperCase() + result.species.name.slice(1)} API Object:`);
                 console.log(result);
                 katherine.shutUp(); //<-----END SPEAKING OF LAST POKEMON'S STATISTICS IF THERE WAS ONE
                 $("#dimensions-display1").text(""); //<-----CLEAR ELEMENT THAT DISPLAYED LAST POKEMON'S HEIGHT IF THERE WAS ONE
@@ -351,20 +351,20 @@ class PokemonClass {
                     pokeHeight + " and a weight of " + pokeWeight + 
                     ", " + pokemon + " has a speed of " + pokeOtherStats[0].match(/\d+/g)   
                 , {
-                    onStart:function(){  //<---WHEN START SPEAKING APPLY SOUNDWAVE ANIMATION CLASS TO SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
+                    onStart:()=> {  //<---WHEN START SPEAKING APPLY SOUNDWAVE ANIMATION CLASS TO SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
                         $(".soundwave").addClass("soundwaveWaving");
                     },  
-                    onEnd:function() { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
+                    onEnd:()=> { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
                         $(".soundwave").removeClass("soundwaveWaving");
                     }
                 });
                 /*---------------------------------------------------------------------------------------------------*/
-                console.log(`${self.pokemonName.charAt(0).toUpperCase() + self.pokemonName.slice(1)} Pokemon Object:`);
+                console.log(`${pokemon.charAt(0).toUpperCase() + pokemon.slice(1)} Pokemon Object:`);
                 console.log(self.data);
                 console.log("Pokemon Objects Array (displayed with 'Trainer Object'.all() method):");
                 console.log(trainerObj.all());
             }
-        ).fail(function(result){
+        ).fail((result)=>{
             alert("Search failed. Not a known Pokemon, or servers are experiencing difficulties.");
         }); //<----END OF AJAX CALL BLOCK (WHICH IS INSIDE OF POKEMON CLASS'S METHOD DEFINITION)
     } //<----END OF POKEMON CLASS'S METHOD DEFINITION
@@ -375,7 +375,7 @@ class PokemonClass {
 /*---------PASS INPUT FIELD VALUE TO POKEMON CLASS CONSTRUCTOR FUNCTION, CREATING POKEMON OBJECT------------------------------*/
 /*---------INSTANCE, THEN CALL METHOD THAT INITIATES AJAX CALL AND ESSENTIALLY POPULATES HTML---------------------------------*/
 let pokemonSearch; //<---(gives soon to be object global scope)
-$("#searchform").submit(function(event){
+$("#searchform").submit((event)=>{
     event.preventDefault();
     var inputValue = $.trim($("#inputsearch").val().toLowerCase()).replace(" ", "-").replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,"");
     pokemonSearch = new PokemonClass(inputValue);
@@ -386,7 +386,7 @@ $("#searchform").submit(function(event){
 /*----------------------------------------------------------------------------------------------------------------------------*/
 
 /*----------ON CLICK #EXPORT BUTTON: CREATE CSV FROM ARRAY OF POKEMON OBJECTS AND ALLOW FOR DOWNLOAD--------------------------*/
-$("#export").click(function(event){
+$("#export").click((event)=>{
    event.preventDefault();
     if (pokeArray.length === 0) {
         return;
@@ -420,12 +420,12 @@ $("#index").click(event=> {
     if (!pokeArray.includes(pokemonSearch.data) && typeof pokemonSearch.data !== "undefined" && ($("#hpbarText").text() !== "Loading..." && $("#hpbarText").text() !== "")) {
         trainerObj.add(pokemonSearch.data);
         var box = $("<div></div>").addClass("pokemonSelected");
-        var pokemon = pokemonSearch.pokemonName;
+        var pokemon = pokemonSearch.data.name;
         box.click(()=>{  //<--ON CLICK: "GET" POKEMON OBJ AND CONSOLE LOG IT
             trainerObj.get(pokemon); 
         });
         var name = $("<p></p>").addClass("pokemonSelectedText");
-        name.text(`${pokemonSearch.pokemonName}`);
+        name.text(`${pokemon}`);
         var removeButton = $("<span></span>").addClass("deindex"); //<--ALSO ADD A SPAN ELEMENT THAT SERVES AS A REMOVE BUTTON
         removeButton.text(" [x]"); 
         box.append(name);
@@ -447,7 +447,7 @@ $("#index").click(event=> {
         $("#indexedPokemon").append(box);
         $("#count").text(`Count: ${pokeArray.length}`); //<---DISPLAY COUNT OF POKEMON OBJECTS IN POKEMON POKEARRAY
     }
-    console.log(`Pokemon Object Array After Adding ${pokemonSearch.pokemonName.replace(" [x]", "").charAt(0).toUpperCase() + pokemonSearch.pokemonName.replace(" [x]", "").slice(1)} Pokemon Object (using 'Trainer Object'.addPokemonObj('${pokemonSearch.pokemonName.replace(" [x]", "").charAt(0).toUpperCase() + pokemonSearch.pokemonName.replace(" [x]", "").slice(1)} Pokemon Object') method, displayed with 'Trainer Object'.all():`);
+    console.log(`Pokemon Object Array After Adding ${pokemon.replace(" [x]", "").charAt(0).toUpperCase() + pokemon.replace(" [x]", "").slice(1)} Pokemon Object (using 'Trainer Object'.addPokemonObj('${pokemon.replace(" [x]", "").charAt(0).toUpperCase() + pokemon.replace(" [x]", "").slice(1)} Pokemon Object') method, displayed with 'Trainer Object'.all():`);
     console.log(trainerObj.all());
 });
 /*----------------------------------------------------------------------------------------------------------------------------*/
@@ -457,6 +457,14 @@ $("#clear").click(event=>{
     $("#indexedPokemon").empty();
     console.log("Pokemon Objects Array After Emptying of All Pokemon Objects (using 'Trainer Obj'.reset() method, also displayed with this method):");
     console.log(trainerObj.reset());
+});
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+
+/*---------ON CLICK: PASS RANDOM INTEGER BETWEEN 1 AND 802 TO POKEMON CLASS CONSTRUCTOR-------------------------------------------*/
+$("#indexed").click(event=>{
+    var randomNumberId = Math.ceil(Math.random()*802);
+    pokemonSearch = new PokemonClass(randomNumberId);
+    pokemonSearch.retrievePokemon();
 });
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 
