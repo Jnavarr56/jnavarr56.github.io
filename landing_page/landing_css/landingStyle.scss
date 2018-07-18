@@ -1,23 +1,15 @@
-
 iframe {
   display: none;
 }
-
 body {
   height: 100vh;
   width: 100vw;
-
   background-color: black;
-
 }
-
 section {
   height: 700px;
   width: 1200px;
-  
   margin: 0 auto;
-
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,20 +18,13 @@ section {
 .container-pokeball {
   height: 400px;
   width: 400px;
-  
-  
   border-radius: 100%;
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   border-color: #191919;
-  
   animation: spin 3s linear .5s infinite;
-  
-  
   background: linear-gradient(red 49%, white 49%);
 }
 
@@ -50,89 +35,55 @@ section {
   background-color:black;
   height: 10%;
   width: 100%;
-  
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .container-button {
   height: 250%;
   width: 25%;
-  
   background-color: black;
   border-radius: 100%;
-  
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .container-button-click {
   height: 50%;
   width: 50%;
-  
   border-radius: 100%;
-  
-  /*background: #6e2c5e;
-  background: -webkit-linear-gradient(to right, #6e2c5e, #623169); 
-  background: linear-gradient(to right, #6e2c5e, #623169);*/ 
-  
-  
   background-color: white;
-  
-
 }
-
 .heatup {
-  
   animation: heatup 10s linear 0s 1 forwards;
 }
-
 @keyframes heatup{
   100% {background-color: #f7ffab; box-shadow:0 0 50px gold,0 0 150px gold;}
 }
-
 h1 {
-  
   color: #20C20E;
   font-size: 185%;
-  
   position: relative;
   left: 300px;
   bottom: 575px;
-
   writing-mode: vertical-rl;
   text-orientation: upright;
-  
-
 }
-
-
 .flash {
   animation: flash 3s linear 0s 1 forwards;  
 }
 @keyframes flash {
-  
   55% {opacity: 0;}
   100% {background: white; opacity: 0;}
 }
-
 #pokeglow {
   height: auto;
   width: auto;
   border-radius: 100%;
-  
-  
-
-  
 }
-
 .heatup2 {
   animation: heatup2 10s linear 0s 1 forwards;
-
 }
-
 @keyframes heatup2 {
   100% {background-color: #f7ffab; box-shadow:0 0 2000px gold,0 0 2000px gold;}
 }

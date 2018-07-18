@@ -51,9 +51,6 @@ section {
   height: 50%;
   width: 50%;
   border-radius: 100%;
-  /*background: #6e2c5e;
-  background: -webkit-linear-gradient(to right, #6e2c5e, #623169); 
-  background: linear-gradient(to right, #6e2c5e, #623169);*/
   background-color: white; }
 
 .heatup {

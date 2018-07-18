@@ -4,6 +4,9 @@
 *:focus {
   outline: none; }
 
+button:focus {
+  outline: none; }
+
 #indexed {
   font-family: "exans";
   font-size: 200%;
@@ -154,6 +157,7 @@ button {
 #screen {
   height: 60%;
   width: 30%;
+  position: relative;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   display: flex;
@@ -386,7 +390,82 @@ p {
 
 #export {
   position: relative;
-  top: 75px;
-  left: 35px; }
+  top: 32.5px;
+  left: 35px;
+  font-family: "exans";
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-style: none;
+  color: #20c20e; }
+
+#index {
+  margin: 10px 0;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  z-index: 10;
+  font-family: "exans";
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-style: none;
+  color: #20c20e; }
+
+#indexedPokemon {
+  height: 500px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  position: relative;
+  top: 50px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.5); }
+
+.pokemonSelected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 110%;
+  margin: 5px 0 5px -2.25px;
+  padding-top: 10px;
+  overflow: visible; }
+
+.pokemonSelectedText {
+  font-family: "exans";
+  color: white;
+  text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold; }
+
+.deindex {
+  color: red; }
+
+#countbox {
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  height: 5%;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  justify-content: center; }
+  #countbox p {
+    font-family: "exans";
+    color: white;
+    text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold; }
+
+#clear {
+  position: relative;
+  top: 70px;
+  left: 35px;
+  font-family: "exans";
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-style: none;
+  color: #20c20e; }
 
 /*# sourceMappingURL=mainCustomStyle.css.map */
