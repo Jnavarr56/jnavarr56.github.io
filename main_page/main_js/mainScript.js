@@ -202,7 +202,7 @@ class PokemonClass {
         $("#abar").css("background-color", "white");
         $("#dbar").css("background-color", "white");
         $("#hpbar").css("background-color", "white");
-        $("#screen").css("background", "url(http://frankievision.com/loader.gif) center no-repeat");
+        $("#screen").css("background", "rgba(0,0,0,.2 ) url(http://frankievision.com/loader.gif) center no-repeat");
     /*---------------------------------------------------------------------------------------------------*/
         var self = this; //<-----ALLOWS ME TO REFERENCE SCOPE OF THE CLASS EVEN THOUGH I AM INSIDE OF THE ".done()" OF AN AJAX CALL
         $.ajax({
