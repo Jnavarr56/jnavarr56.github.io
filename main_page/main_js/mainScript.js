@@ -7,10 +7,12 @@ katherine.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Googl
 katherine.shutUp(); 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/*-----------------------------------------------------GIVE VARIABLE GLOBAL SCOPE-----------------------------------------------------------------------------*/
+let pokemonSearch;
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------GLOBAL ARRAY TO HOLD POKEMON OBJECTS-------------------------------------------------------------------*/
 let pokeArray = [];
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 /*----------------------------------------------------DEFINE GLOBAL TRAINER CLASS THAT TAKES POKEMON OBJECTS ARRAY AS PARAMETER-------------------------------*/
 class TrainerClass {
     constructor(arrayofPokemonObjects) {
@@ -25,8 +27,6 @@ class TrainerClass {
         return(this.array)
     }
     removePokemonObj(nameOfPokemonObjtoRemove){
-        /*this.array = pokeArray;
-        return(this.array);*/
         var indexedname = nameOfPokemonObjtoRemove.text().replace(" [x]", "");
         pokeArray.forEach(element=>{
             if(indexedname === element.name) {
@@ -41,8 +41,11 @@ class TrainerClass {
             if(element.name === pokemonObjToGet) {
                 console.log(`${element.name.charAt(0).toUpperCase() + element.name.slice(1)} Pokemon Object Retrieved from Array in Trainer Object with 'Trainer Obj'.get('${element.name.charAt(0).toUpperCase() + element.name.slice(1)} Pokemon Obj') method:`);
                 console.log(element);
+                pokemonSearch = new PokemonClass(pokemonObjToGet);
+                pokemonSearch.retrievePokemon();
             }
         });
+        
     }
     reset() {
         pokeArray = [];
@@ -374,7 +377,7 @@ class PokemonClass {
 /*---------WHEN ENTER IS HIT, TAKE INPUT FIELD VALUE, TRIM WHITESPACE, REMOVE ILLOGICAL CHARACTERS----------------------------*/
 /*---------PASS INPUT FIELD VALUE TO POKEMON CLASS CONSTRUCTOR FUNCTION, CREATING POKEMON OBJECT------------------------------*/
 /*---------INSTANCE, THEN CALL METHOD THAT INITIATES AJAX CALL AND ESSENTIALLY POPULATES HTML---------------------------------*/
-let pokemonSearch; //<---(gives soon to be object global scope)
+ //<---(gives soon to be object global scope)
 $("#searchform").submit((event)=>{
     event.preventDefault();
     var inputValue = $.trim($("#inputsearch").val().toLowerCase()).replace(" ", "-").replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,"");
