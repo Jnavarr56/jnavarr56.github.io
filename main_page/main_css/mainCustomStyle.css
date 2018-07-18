@@ -166,7 +166,8 @@ button {
   justify-content: space-evenly;
   height: 270px;
   width: 320px;
-  min-width: 320px; }
+  min-width: 320px;
+  border-radius: 15px; }
 
 .horizontal {
   height: 1px;

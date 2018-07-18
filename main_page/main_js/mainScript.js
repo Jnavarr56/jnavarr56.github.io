@@ -451,6 +451,7 @@ $("#index").click(event=> {
     console.log(trainerObj.all());
 });
 /*----------------------------------------------------------------------------------------------------------------------------*/
+
 /*---------ON CLICK: EMPTY POKEARRAY OF ALL POKEMON OBJECTS, AND EMPTY CONTAINER DIV THAT VISUALIZES POKEARRAY OF ALL CHILDREN----*/
 $("#clear").click(event=>{
     $("#indexedPokemon").empty();
