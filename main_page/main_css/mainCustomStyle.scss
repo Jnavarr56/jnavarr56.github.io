@@ -60,7 +60,6 @@ iframe {
 .top {
     height: 90px;
     min-height: 90px;
-    min-width: 1140px;
 
     background-color:rgba(0,0,0,.2);
 }
@@ -78,13 +77,13 @@ iframe {
     justify-content: flex-start;
 }
 input {
+    font-family: "exans";
     width: 90%;
     border-radius: 5px;
     margin: 20px;
     background: rgba(0, 0, 0, .8);
     border: none;
-    @include hackerGreen(.7);
-    font-family: exans;
+    @include hackerGreen(.7); 
 }
 form {
     width: 100%;
@@ -223,12 +222,12 @@ button {
 }
 .horizontal {
     height: 1px;
-    width: 100%;
-
+    
+    width: 200%;
     @include hackerGreenBackground(.5);
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .vertical {
     height: 27000%;
@@ -435,7 +434,7 @@ p {
     border-style: none;
 
     position: relative;
-    top: 32.5px;
+    top: 50px;
     left: 35px;
 }
 #index {
@@ -465,7 +464,7 @@ p {
     border-style: solid;
     
     position: relative;
-    top: 50px;
+    top: 60px;
     
     @include displayFlexCenterAll();
     flex-direction: column;
@@ -518,7 +517,7 @@ p {
     background-color: rgba(0, 0, 0, .4);
 
     position: relative;
-    top: 70px;
+    top: 85px;
     left: 35px;
 
     border-radius: 15px;

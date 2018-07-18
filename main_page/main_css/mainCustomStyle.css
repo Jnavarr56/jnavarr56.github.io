@@ -36,7 +36,6 @@ iframe {
 .top {
   height: 90px;
   min-height: 90px;
-  min-width: 1140px;
   background-color: rgba(0, 0, 0, 0.2); }
 
 .side {
@@ -50,13 +49,13 @@ iframe {
   justify-content: flex-start; }
 
 input {
+  font-family: "exans";
   width: 90%;
   border-radius: 5px;
   margin: 20px;
   background: rgba(0, 0, 0, 0.8);
   border: none;
-  color: rgba(32, 194, 14, 0.7);
-  font-family: exans; }
+  color: rgba(32, 194, 14, 0.7); }
 
 form {
   width: 100%;
@@ -177,10 +176,10 @@ button {
 
 .horizontal {
   height: 1px;
-  width: 100%;
+  width: 200%;
   background-color: rgba(32, 194, 14, 0.5);
   display: flex;
-  justify-content: space-evenly; }
+  justify-content: space-around; }
 
 .vertical {
   height: 27000%;
@@ -376,7 +375,7 @@ p {
   border-radius: 15px;
   border-style: none;
   position: relative;
-  top: 32.5px;
+  top: 50px;
   left: 35px; }
 
 #index {
@@ -399,7 +398,7 @@ p {
   border-radius: 15px;
   border-style: solid;
   position: relative;
-  top: 50px;
+  top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -443,7 +442,7 @@ p {
   color: #20C20E;
   background-color: rgba(0, 0, 0, 0.4);
   position: relative;
-  top: 70px;
+  top: 85px;
   left: 35px;
   border-radius: 15px;
   border-style: none; }
