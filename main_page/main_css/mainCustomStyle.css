@@ -153,7 +153,7 @@ button {
     opacity: 1; } }
 @keyframes writingUserDataRestore {
   100% {
-    text-shadow: 0 0 80px gold, 0 0 180px gold, 0 0 90px gold, 0 0 180px gold; } }
+    text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold; } }
 #screen {
   height: 270px;
   width: 320px;

@@ -1,11 +1,21 @@
+@font-face {
+    font-family: "exans";
+    src: url('main_fonts/Exan-Regular.ttf') format('truetype');
+}
 @mixin displayFlexCenterAll {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-@font-face {
-    font-family: "exans";
-    src: url('main_fonts/Exan-Regular.ttf') format('truetype');
+@mixin textShadowA {
+    text-shadow:
+    0 0 40px gold, 0 0 140px gold,
+    0 0 40px gold, 0 0 140px gold;
+}
+@mixin textShadowB {
+    text-shadow:
+    0 0 80px gold, 0 0 180px gold,
+    0 0 90px gold, 0 0 180px gold;
 }
 *:focus {
     outline: none;
@@ -17,9 +27,7 @@ button:focus {
     font-family: "exans";
     font-size: 200%;
     color: rgba(255, 255, 255,1);
-    text-shadow:
-    0 0 40px gold, 0 0 140px gold,
-    0 0 40px gold, 0 0 140px gold;
+    @include textShadowA();
     position: relative;
     left: 30px;
     top: 4px;
@@ -89,9 +97,7 @@ button {
     font-family: "exans";
     font-size: 120%;
     color: rgba(255, 255, 255,1);
-    text-shadow:
-    0 0 80px gold, 0 0 180px gold,
-    0 0 90px gold, 0 0 180px gold;
+    @include textShadowB();
 
     position: relative;
     top: 10px;   
@@ -173,9 +179,7 @@ button {
 }
 @keyframes writingUserDataRestore {
     100% {
-        text-shadow:
-        0 0 80px gold, 0 0 180px gold,
-        0 0 90px gold, 0 0 180px gold;
+        @include textShadowA();
     }
 }
 #screen {
@@ -471,7 +475,7 @@ p {
 }
 .pokemonSelected {
     @include displayFlexCenterAll();
-    
+
     height: 25px;
     width: 110%;
     margin: 5px 0 5px -2.25px;
@@ -483,9 +487,7 @@ p {
 .pokemonSelectedText {
     font-family: "exans";
     color:white;
-    text-shadow:
-    0 0 40px gold, 0 0 140px gold,
-    0 0 40px gold, 0 0 140px gold;
+    @include textShadowA();
 }
 .deindex {
     color: red;
@@ -507,10 +509,7 @@ p {
     p {
         font-family: "exans";
         color: white;
-        text-shadow:
-        0 0 40px gold, 0 0 140px gold,
-        0 0 40px gold, 0 0 140px gold;
-
+        @include textShadowA();
     }
 }
 #clear{
