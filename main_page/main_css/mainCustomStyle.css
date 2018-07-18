@@ -217,7 +217,7 @@ p {
 .soundwave {
   height: 15%;
   width: 10%;
-  background-color: #20c20e; }
+  background-color: #20C20E; }
 
 .soundwaveWaving {
   animation: waving .25s linear 0s infinite; }
@@ -243,7 +243,7 @@ p {
   100% {
     height: 60%; } }
 .bar-label {
-  color: #20c20e;
+  color: #20C20E;
   transform: rotate(-90deg);
   position: relative;
   top: 7px; }
@@ -339,7 +339,7 @@ p {
 .header {
   font-family: "exans";
   font-size: 100%;
-  color: #20c20e;
+  color: #20C20E;
   position: absolute;
   top: 0;
   left: 5px; }
@@ -354,11 +354,11 @@ p {
 
 #dimensions-display1 {
   font-family: "exans";
-  color: #20c20e; }
+  color: #20C20E; }
 
 #dimensions-display2 {
   font-family: "exans";
-  color: #20c20e; }
+  color: #20C20E; }
 
 .bar {
   height: 100%;
@@ -382,7 +382,7 @@ p {
 
 #export {
   font-family: "exans";
-  color: #20c20e;
+  color: #20C20E;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
   border-style: none;
@@ -392,7 +392,7 @@ p {
 
 #index {
   font-family: "exans";
-  color: #20c20e;
+  color: #20C20E;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
   border-style: none;
@@ -452,7 +452,7 @@ p {
 
 #clear {
   font-family: "exans";
-  color: #20c20e;
+  color: #20C20E;
   background-color: rgba(0, 0, 0, 0.4);
   position: relative;
   top: 70px;
