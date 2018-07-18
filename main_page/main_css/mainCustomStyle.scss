@@ -4,7 +4,7 @@
 }
 *:focus {
     outline: none;
-  } 
+} 
 button:focus {
     outline: none;
 } 
@@ -12,29 +12,22 @@ button:focus {
     font-family: "exans";
     font-size: 200%;
     color: rgba(255, 255, 255,1);
-
-    position: relative;
-    left: 30px;
-    top: 4px;
-
-    z-index: 2; 
-
     text-shadow:
     0 0 40px gold, 0 0 140px gold,
     0 0 40px gold, 0 0 140px gold;
+    position: relative;
+    left: 30px;
+    top: 4px;
+    z-index: 2;
 }
 body {
     height: 100vh;
     width: 100vw;
-
+    min-width: 1140px;
     background: white;
     background-size: 100%;
-
     opacity: 0;
     animation: fadeIn 1s linear 0s 1 forwards;
-
-    min-width: 1140px;
-
     overflow: hidden;  
 }
 iframe {
@@ -47,7 +40,6 @@ iframe {
     height: 90px;
     min-height: 90px;
     min-width: 1140px;
-   
     background-color:rgba(0,0,0,.2);
 }
 .side {
