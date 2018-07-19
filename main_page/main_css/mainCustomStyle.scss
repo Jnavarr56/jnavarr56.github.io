@@ -25,12 +25,12 @@ $hacker-green-no-opacity-feature: #20C20E;
 @mixin hackerGreenBackground($opacity-setting) {
     background-color: rgba(32, 194, 14, $opacity-setting);
 }
-*:focus {
-    outline: none;
-} 
-button:focus {
-    outline: none;
-} 
+
+input:focus {outline:0;};
+#export:focus {outline:0;};
+#index:focus {outline:0;};
+#clear:focus {outline:0;};
+
 #indexed {
     font-family: "exans";
     font-size: 200%;

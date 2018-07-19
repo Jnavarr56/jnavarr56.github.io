@@ -286,7 +286,7 @@ class PokemonClass {
                 var pokeID = result.id;
                 /*-------------------------------------------*/
 
-                getPokeBio(pokemon); //<-----PERFORM AJAX CALL USING NAME PROPERTY TO START SPEAKING POKEMON FACTS
+                
                 
                 self.data["name"] = pokemon;        //<-----SET VALUE AS PROPERTY CALLED "NAME" IN POKEMON OBJECT (A)
                 self.data["height"] = pokeHeight;   //<-----SET VALUE AS PROPERTY CALLED "HEIGHT" IN POKEMON OBJECT (A)
@@ -314,17 +314,17 @@ class PokemonClass {
                 if (pokeID <= 721 && pokemon.indexOf("-") === -1) {
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
                     $("#screen").css("background-size", "50%");
-                    self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
+                    self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`; 
                     console.log(1);
                 }
-                else if (pokeID > 721 && pokemon.indexOf("-") === -1) { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
+                else if (pokeID > 721 && pokemon.indexOf("-") === -1) {   //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
                     $("#screen").css("background-size", "250px 250px");
                     self.data["imageUrl"] = pokeImage;
                     console.log(2);
                 }
-                else if (pokeID <= 721 && pokemon.indexOf("-") !== -1) {
-                    if (pokemon[pokemon.indexOf("-") + 1] === "f" || pokemon[pokemon.indexOf("-") + 1] === "m") {
+                else if (pokeID <= 721 && pokemon.indexOf("-") !== -1) { 
+                    if (pokemon[pokemon.indexOf("-") + 1] === "f" || pokemon[pokemon.indexOf("-") + 1] === "m") { //<-----(account for gendered pokemon)
                         $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`);
                         $("#screen").css("background-size", "50%");
                         self.data["imageUrl"] = `url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`;
@@ -336,6 +336,12 @@ class PokemonClass {
                         self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
                         console.log(4);
                     }
+                }
+                else if (pokeID > 721 && pokemon.indexOf("-") !== -1) { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
+                    $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
+                    $("#screen").css("background-size", "50%");
+                    self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
+                    console.log(5);
                 }
                 /*----------------------------------------------------------------------------------------------------------------------------------*/
     
@@ -431,8 +437,9 @@ class PokemonClass {
                     },  
                     onEnd:()=> { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
                         $(".soundwave").removeClass("soundwaveWaving");
+                        getPokeBio(element.name);
                     }
-                });
+                }); 
                 /*---------------------------------------------------------------------------------------------------*/
                 console.log(`${pokemon.charAt(0).toUpperCase() + pokemon.slice(1)} Pokemon Object:`);
                 console.log(self.data);

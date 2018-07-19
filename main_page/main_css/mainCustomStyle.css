@@ -1,11 +1,17 @@
 @font-face {
   font-family: "exans";
   src: url("main_fonts/Exan-Regular.ttf") format("truetype"); }
-*:focus {
-  outline: none; }
+input:focus {
+  outline: 0; }
 
-button:focus {
-  outline: none; }
+#export:focus {
+  outline: 0; }
+
+#index:focus {
+  outline: 0; }
+
+#clear:focus {
+  outline: 0; }
 
 #indexed {
   font-family: "exans";
