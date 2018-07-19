@@ -26,7 +26,7 @@ class TrainerClass {
         this.array = pokeArray;
         return(this.array)
     }
-    removePokemonObj(nameOfPokemonObjtoRemove){
+    removePokemonObj(nameOfPokemonObjtoRemove) {
         var indexedname = nameOfPokemonObjtoRemove.text().replace(" [x]", "");
         pokeArray.forEach(element=>{
             if(indexedname === element.name) {
@@ -469,6 +469,12 @@ $("#export").click((event)=>{
    hiddenLink.target = '_blank'; 
    hiddenLink.download = `${pokeArray.length}pokemon.csv`;  //<---SET NAME OF FILE THAT WILL BE DOWNLOADED
    hiddenLink.click(); //<---SIMULATE A CLICKING
+
+   pokeArray.forEach(element=>{
+       element.name = element.name.toLowerCase();
+   })
+   trainerObj = new TrainerClass(pokeArray);
+   trainerObj.all();
 });
 /*----------------------------------------------------------------------------------------------------------------------------*/
 
