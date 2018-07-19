@@ -37,12 +37,66 @@ class TrainerClass {
         this.array = pokeArray;
     }
     get(pokemonObjToGet){
+        katherine.shutUp();
+        stopWriting();
+        $("#abar").removeClass("loading-stats");
+        $("#hpbar").removeClass("loading-stats");
+        $("#dbar").removeClass("loading-stats");
         this.array.forEach(element=>{
             if(element.name === pokemonObjToGet) {
                 console.log(`${element.name.charAt(0).toUpperCase() + element.name.slice(1)} Pokemon Object Retrieved from Array in Trainer Object with 'Trainer Obj'.get('${element.name.charAt(0).toUpperCase() + element.name.slice(1)} Pokemon Obj') method:`);
                 console.log(element);
-                pokemonSearch = new PokemonClass(pokemonObjToGet);
-                pokemonSearch.retrievePokemon();
+                var indexOfIndexedPokemon = this.array.indexOf(element);
+                /*pokemonSearch = new PokemonClass(pokemonObjToGet);
+                pokemonSearch.retrievePokemon();*/
+                $("#dimensions-display1").text(`HEIGHT: ${element.height}`);
+                $("#dimensions-display2").text(`WEIGHT: ${element.weight}`);
+                $("#abarText").text(element.attack);
+                $("#hpbarText").text(element.hp);
+                $("#dbarText").text(element.defense);
+                $("#abilities-header").text(`${element.name}'s Main Abilities [${element.abilities.length}]:`);
+                $("#abilities-holder").html("");
+                element.abilities.forEach(ability => {
+                    $("#abilities-holder").html($("#abilities-holder").html() + `<p>${ability}</p>`);
+                });
+                $("#other-stats-header").text(`${element.name}'s Other Stats [${element.abilities.length}]:`);
+                $("#other-stats-holder").html("");
+                element.otherStats.forEach(otherStat => {
+                    $("#other-stats-holder").html($("#other-stats-holder").html() + `<p>${otherStat}</p>`);  
+                });
+                if (element.hp < (260*.33)) {
+                    $("#hpbar").css("background-color", "red");   
+                }
+                else if (element.hp >= (260*.33) && element.hp < (260*.66)) {
+                    $("#hpbar").css("background-color", "orange");
+                }
+                else {
+                    $("#hpbar").css("background-color", "green");
+                }
+                $("#aMaxer").css("width", (element.attack/190)*100 + "%");
+                if (element.attack < (190*.33)) {
+                    $("#abar").css("background-color", "red");
+                }
+                else if (element.attack >= (190*.33) && element.attack < (190*.66)) {
+                    $("#abar").css("background-color", "orange");
+                }
+                else {
+                    $("#abar").css("background-color", "green");
+                }
+                $("#dMaxer").css("width", (element.defense/230)*100 + "%"); 
+                if (element.defense < (230*.33)) {
+                    $("#dbar").css("background-color", "red");
+                }
+                else if (element.defense >= (230*.33) && element.defense < (230*.66)) {
+                    $("#dbar").css("background-color", "orange");                    
+                }
+                else {
+                    $("#dbar").css("background-color", "green");                
+                }  
+                $("#screen").css("background", `rgba(0,0,0,.2) url('${element.imageUrl}') no-repeat center`);
+                $("#screen").css("background-size", "50%");
+                katherine.say(`${element.name} is number ${indexOfIndexedPokemon + 1} in your array of indexed pokemon.`);
+                getPokeBio(element.name);
             }
         });
         
@@ -260,10 +314,12 @@ class PokemonClass {
                 if (pokeID <= 721) {
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
                     $("#screen").css("background-size", "50%");
+                    self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
                 }
                 else { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
                     $("#screen").css("background-size", "250px 250px");
+                    self.data["imageUrl"] = pokeImage;
                 }
                 /*----------------------------------------------------------------------------------------------------------------------------------*/
     
@@ -394,7 +450,7 @@ $("#export").click((event)=>{
     if (pokeArray.length === 0) {
         return;
     }
-   var exportArray = [["Name", "Height", "Weight", "HP", "Attack", "Defense", "ID", "Abilities", "Other Stats"]]; //<---FIRST ROW OF VALUES
+   var exportArray = [["Name", "Height", "Weight", "HP", "Attack", "Defense", "ID", "Abilities", "Other Stats", "Image URL"]]; //<---FIRST ROW OF VALUES
    var dataExport = exportArray[0].join(",") + "\n"; //<---FIRST ROW OF VALUES FORMATTED TO BE READ AS A CSV ROW
    pokeArray.forEach(element=>{ //<---LOOP THROUGH ARRAY OF POKEMON OBJECTS
        element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1); //<---TAKE NAME PROPERTY OF OBJECT AND CAPITALIZE
@@ -425,6 +481,10 @@ $("#index").click(event=> {
         var box = $("<div></div>").addClass("pokemonSelected");
         var pokemon = pokemonSearch.data.name;
         box.click(()=>{  //<--ON CLICK: "GET" POKEMON OBJ AND CONSOLE LOG IT
+            stopWriting();
+             $("#abar").removeClass("loading-stats");
+             $("#hpbar").removeClass("loading-stats");
+             $("#dbar").removeClass("loading-stats");
             trainerObj.get(pokemon); 
         });
         var name = $("<p></p>").addClass("pokemonSelectedText");
