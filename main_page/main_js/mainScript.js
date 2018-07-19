@@ -443,7 +443,8 @@ $("#searchform").submit((event)=>{
 /*----------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------------*/
-
+let elementAbilitiesPrint;
+let elementOtherStatsPrint;
 /*----------ON CLICK #EXPORT BUTTON: CREATE CSV FROM ARRAY OF POKEMON OBJECTS AND ALLOW FOR DOWNLOAD--------------------------*/
 $("#export").click((event)=>{
    event.preventDefault();
@@ -455,12 +456,20 @@ $("#export").click((event)=>{
    pokeArray.forEach(element=>{ //<---LOOP THROUGH ARRAY OF POKEMON OBJECTS
        element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1); //<---TAKE NAME PROPERTY OF OBJECT AND CAPITALIZE
         if (Array.isArray(element.abilities) || Array.isArray(element.otherStats)) { //<---TAKE PROPERTIES OF OBJECT THAT ARE ARRAYS AND MAKE THEM STRINGS
-            element.abilities = element.abilities.join(" ");
-            element.otherStats = element.otherStats.join(" ");
+            elementAbilitiesPrint = element.abilities.join(" ");
+            elementOtherStatsPrint = element.otherStats.join(" ");
         }
         var elementProperties  = [];
         for (x in element) { //<---LOOP THROUGH PROPERTIES OF OBJECT THAT ARE NOW EITHER CAPITALIZED OR HAVE BEEN MADE INTO STRINGS
-            elementProperties.push(element[x]); //<---PUSH ALL OF THE SINGLE OBJECTS PROPERTY VALUES INTO A LIST CALLED elementProperties
+            if (x === "abilities") { //<---PUSH ALL OF THE SINGLE OBJECTS PROPERTY VALUES INTO A LIST CALLED elementProperties
+                elementProperties.push(elementAbilitiesPrint);
+            }
+            else if (x === "otherStats") {
+                elementProperties.push(elementOtherStatsPrint);
+            }
+            else {
+                elementProperties.push(element[x]);
+            }                                                                                    
         }
        dataExport += elementProperties.join(",") + "\n"; //<---FORMAT elementProperties TO BE READ AS A CSV ROW AND ADD TO THE STRING dataExport
    });
@@ -470,11 +479,11 @@ $("#export").click((event)=>{
    hiddenLink.download = `${pokeArray.length}pokemon.csv`;  //<---SET NAME OF FILE THAT WILL BE DOWNLOADED
    hiddenLink.click(); //<---SIMULATE A CLICKING
 
-   pokeArray.forEach(element=>{
+   pokeArray.forEach(element=>{ //<---SET POKEMON OBJECTS TO ORIGINAL STATE (NAME PROPERTY IS ALL LOWERCASED)
        element.name = element.name.toLowerCase();
    })
-   trainerObj = new TrainerClass(pokeArray);
-   trainerObj.all();
+   trainerObj = new TrainerClass(pokeArray); //<---REASSIGN GLOBAL TRAINER CLASS OBJECT VARIABLE TO RESET ARRAY
+   trainerObj.all(); //<---CONSOLE.LOG TO CONFIRM
 });
 /*----------------------------------------------------------------------------------------------------------------------------*/
 
