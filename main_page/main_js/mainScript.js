@@ -134,7 +134,7 @@ let getPokeBio = (pokemonname) => {
                 onEnd:()=> {
                     $(".soundwave").removeClass("soundwaveWaving");
                 }
-                });
+            });
         });
     }).fail((result)=> {
         console.log("not working");
@@ -286,6 +286,7 @@ class PokemonClass {
                 var pokeID = result.id;
                 /*-------------------------------------------*/
 
+                getPokeBio(element.name);
                 
                 
                 self.data["name"] = pokemon;        //<-----SET VALUE AS PROPERTY CALLED "NAME" IN POKEMON OBJECT (A)
@@ -437,7 +438,6 @@ class PokemonClass {
                     },  
                     onEnd:()=> { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
                         $(".soundwave").removeClass("soundwaveWaving");
-                        getPokeBio(element.name);
                     }
                 }); 
                 /*---------------------------------------------------------------------------------------------------*/
