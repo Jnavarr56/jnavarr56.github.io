@@ -31,7 +31,7 @@ class TrainerClass {
         pokeArray.forEach(element=>{
             if(indexedname === element.name) {
                 pokeArray.splice(pokeArray.indexOf(element), 1);
-                $("#count").text(`Count: ${pokeArray.length}`);
+                $("#count").text(`Count ${pokeArray.length}`);
             }
         });
         this.array = pokeArray;
@@ -570,7 +570,7 @@ $("#index").click(event=> {
             console.log(trainerObj.all());
         });
         $("#indexedPokemon").append(box);
-        $("#count").text(`Count: ${pokeArray.length}`); //<---DISPLAY COUNT OF POKEMON OBJECTS IN POKEMON POKEARRAY
+        $("#count").text(`Count ${pokeArray.length}`); //<---DISPLAY COUNT OF POKEMON OBJECTS IN POKEMON POKEARRAY
     }
     console.log(`Pokemon Object Array After Adding ${pokemon.replace(" [x]", "").charAt(0).toUpperCase() + pokemon.replace(" [x]", "").slice(1)} Pokemon Object (using 'Trainer Object'.addPokemonObj('${pokemon.replace(" [x]", "").charAt(0).toUpperCase() + pokemon.replace(" [x]", "").slice(1)} Pokemon Object') method, displayed with 'Trainer Object'.all():`);
     console.log(trainerObj.all());

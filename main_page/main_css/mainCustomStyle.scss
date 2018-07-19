@@ -465,28 +465,11 @@ p {
     flex-direction: column;
     
     overflow: scroll;
-    #countbox {
-        height: 5%;
-        width: 80%;
-    
-        background-color: rgba(0, 0, 0, .2);
-    
-        border-radius: 0 0 15px 15px;
-        margin: 0 auto;
-    
-        display: flex;
-        justify-content: center;
-        z-index: 5;
-    
-        position: absolute;
-        top: 0;
-        p {
-            font-family: "exans";
-            color: white;
-            @include textShadowA();
-        }
-    }
-}
+
+
+
+  
+}   
 .pokemonSelected {
     @include displayFlexCenterAll();
 
@@ -518,4 +501,29 @@ p {
 
     border-radius: 15px;
     border-style: none;   
+}
+#count {
+    font-family: "exans";
+    color: white;
+    @include textShadowA();
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+#countbox {
+    height: auto;
+    width: 20%;
+
+    background-color: rgba(0, 0, 0, .2);
+
+    border-radius: 0 15px 15px 0;
+    margin: 0 auto;
+    padding-top: 10px;
+
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+
+    position: absolute;
+    top: 300px;
+    right: -40px;
 }
