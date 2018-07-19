@@ -309,17 +309,33 @@ class PokemonClass {
                 }
                 self.data["otherStats"] = pokeOtherStats;
                 /*----------------------------------------------------------------------------------------------------------------------------------*/
-                
+                console.log(pokemon.indexOf("-")); 
                 /*-------IF POKEMON NUMBER <= 721 THEN SET #SCREEN BACKGROUND IMAGE (POKEMON PROFILE PIC) AS GIF FROM THIS WEBSITE------------------*/
-                if (pokeID <= 721) {
+                if (pokeID <= 721 && pokemon.indexOf("-") === -1) {
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
                     $("#screen").css("background-size", "50%");
                     self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
+                    console.log(1);
                 }
-                else { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
+                else if (pokeID > 721 && pokemon.indexOf("-") === -1) { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
                     $("#screen").css("background-size", "250px 250px");
                     self.data["imageUrl"] = pokeImage;
+                    console.log(2);
+                }
+                else if (pokeID <= 721 && pokemon.indexOf("-") !== -1) {
+                    if (pokemon[pokemon.indexOf("-") + 1] === "f" || pokemon[pokemon.indexOf("-") + 1] === "m") {
+                        $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`);
+                        $("#screen").css("background-size", "50%");
+                        self.data["imageUrl"] = `url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`;
+                        console.log(3);
+                    }
+                    else {
+                        $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
+                        $("#screen").css("background-size", "50%");
+                        self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
+                        console.log(4);
+                    }
                 }
                 /*----------------------------------------------------------------------------------------------------------------------------------*/
     
