@@ -92,7 +92,6 @@ class TrainerClass {
                     $("#dbar").css("background-color", "green");                
                 }  
                 $("#screen").css("background", `rgba(0,0,0,.2) url('${element.imageUrl}') no-repeat center`);
-                $("#screen").css("background-size", "150px 150px");
                 getPokeBio(element.name);
             }
         });
@@ -125,6 +124,7 @@ let getPokeBio = (pokemonname) => {
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-species/" + pokemonname
     }).done((result)=>{
+        $("#factText").html("Click to hear a different fact");
         var factHolderIndexes = [];
         var factHolderOriginal = [];
         var factHolder = [];
@@ -159,7 +159,7 @@ let getPokeBio = (pokemonname) => {
         console.log("--------------------------------------");
         console.log("--------------------------------------");
         $("#fact").prop("disabled", false);
-        $("#fact").text("Click to hear a different fact");
+        $("#fact").css("background", "rgba(0,0,0,.4)");
         factsIndex = 0;
     }).fail((result)=> {
         console.log("Pokemon facts API call not working.");
@@ -269,8 +269,11 @@ class PokemonClass {
     }
     /*------------------WHEN METHOD CALLED + BEFORE AJAX REQUEST IS DONE, DISPLAY "LOADING" TEXT/GIF-----*/
     retrievePokemon() { 
+        $("indexed")
         facts = [];
-        $("#fact").text("Facts Loading");
+        $("#factText").text("Loading Facts Please Wait");
+        $("#btnBackground").css("background", "rgba(0,0,0,.4) url(http://gifimage.net/wp-content/uploads/2018/04/loading-gif-transparent-background-download-8.gif) center no-repeat");
+        $("#btnBackground").css("background-size", "80%");
         $("#fact").prop("disabled", true);
         katherine.shutUp();
         katherine.shutUp();
@@ -363,33 +366,28 @@ class PokemonClass {
                 /*-------IF POKEMON NUMBER <= 721 THEN SET #SCREEN BACKGROUND IMAGE (POKEMON PROFILE PIC) AS GIF FROM THIS WEBSITE------------------*/
                 if (pokeID <= 721 && pokemon.indexOf("-") === -1) {
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
-                    $("#screen").css("background-size", "150px 150px");
                     self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`; 
                     
                 }
                 else if (pokeID > 721 && pokemon.indexOf("-") === -1) {   //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
-                    $("#screen").css("background-size", "initial");
                     self.data["imageUrl"] = pokeImage;
                     
                 }
                 else if (pokeID <= 721 && pokemon.indexOf("-") !== -1) { 
                     if (pokemon[pokemon.indexOf("-") + 1] === "f" || pokemon[pokemon.indexOf("-") + 1] === "m") { //<-----(account for gendered pokemon)
                         $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`);
-                        $("#screen").css("background-size", "150px 150px");
                         self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif`;
                         
                     }
                     else {
                         $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
-                        $("#screen").css("background-size", "150px 150px");
                         self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
                         
                     }
                 }
                 else if (pokeID > 721 && pokemon.indexOf("-") !== -1) { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
-                    $("#screen").css("background-size", "initial");
                     self.data["imageUrl"] = pokeImage;
                     
                 }

@@ -464,11 +464,15 @@ p {
   position: relative;
   right: 30px;
   height: 120px;
-  width: 100px;
+  width: 95px;
   border-radius: 15px;
   border-style: none;
   font-family: "exans";
   color: #20C20E;
-  background-color: rgba(0, 0, 0, 0.4); }
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding-left: 10px; }
 
 /*# sourceMappingURL=mainCustomStyle.css.map */
