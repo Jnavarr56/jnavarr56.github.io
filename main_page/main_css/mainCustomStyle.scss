@@ -30,6 +30,7 @@ input:focus {outline:0;};
 #export:focus {outline:0;};
 #index:focus {outline:0;};
 #clear:focus {outline:0;};
+#fact:focus {outline:0;};
 
 #indexed {
     font-family: "exans";
@@ -525,4 +526,19 @@ p {
     position: absolute;
     top: 300px;
     right: -40px;
+}
+#fact {
+    position: relative;
+    right: 30px;
+    height: 120px;
+    width: 100px;
+
+    border-radius: 15px;
+    border-style: none;  
+
+    font-family: "exans";
+    color: $hacker-green-no-opacity-feature;
+
+    background-color: rgba(0, 0, 0, .4);
+
 }

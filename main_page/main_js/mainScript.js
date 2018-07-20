@@ -2,8 +2,9 @@
 const katherine = new Artyom();
 katherine.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
+let facts = [];
+let factsIndex;
+let indexOfIndexedPokemon;
 /*-----------------------------------------------------GIVE VARIABLE GLOBAL SCOPE-----------------------------------------------------------------------------*/
 let pokemonSearch;
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -34,8 +35,7 @@ class TrainerClass {
         this.array = pokeArray;
     }
     get(pokemonObjToGet){
-        katherine.shutUp();
-        katherine.shutUp();
+        $("fact").css("display", "none");
         stopWriting();
         $("#abar").removeClass("loading-stats");
         $("#hpbar").removeClass("loading-stats");
@@ -44,7 +44,7 @@ class TrainerClass {
             if(element.name === pokemonObjToGet) {
                 console.log(`${element.name.charAt(0).toUpperCase() + element.name.slice(1)} Pokemon Object Retrieved from Array in Trainer Object with 'Trainer Obj'.get('${element.name.charAt(0).toUpperCase() + element.name.slice(1)} Pokemon Obj') method:`);
                 console.log(element);
-                var indexOfIndexedPokemon = this.array.indexOf(element);
+                indexOfIndexedPokemon = this.array.indexOf(element);
                 /*pokemonSearch = new PokemonClass(pokemonObjToGet);
                 pokemonSearch.retrievePokemon();*/
                 $("#dimensions-display1").text(`HEIGHT: ${element.height}`);
@@ -93,9 +93,6 @@ class TrainerClass {
                 }  
                 $("#screen").css("background", `rgba(0,0,0,.2) url('${element.imageUrl}') no-repeat center`);
                 $("#screen").css("background-size", "150px 150px");
-                katherine.say(`${element.name} is number ${indexOfIndexedPokemon + 1} in your array of indexed pokemon.`);
-                katherine.shutUp();
-                katherine.shutUp();
                 getPokeBio(element.name);
             }
         });
@@ -112,46 +109,60 @@ let trainerObj = new TrainerClass(pokeArray);
 
 /*-----------------------------------------------------GLOBAL AJAX FUNCTION TO RETRIEVE AND SPEAK POKEMON FACTS-----------------------------------------------*/
 let getPokeBio = (pokemonname) => {
+    katherine.say(
+        `${pokemonname} is number ${indexOfIndexedPokemon + 1} in your array of indexed pokemon.` 
+    , {
+        onStart:()=> {  //<---WHEN START SPEAKING APPLY SOUNDWAVE ANIMATION CLASS TO SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
+            $(".soundwave").addClass("soundwaveWaving");
+        },  
+        onEnd:()=> { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
+            $(".soundwave").removeClass("soundwaveWaving");
+            katherine.shutUp();
+        }
+    }); 
+    facts = [];
     console.log("Get Poke Bio Function Activated");
-    katherine.shutUp();
-    katherine.shutUp();
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-species/" + pokemonname
     }).done((result)=>{
+        var factHolderIndexes = [];
         var factHolderOriginal = [];
         var factHolder = [];
         result.flavor_text_entries.forEach(element=>{
             if (element.language.name === "en") {
                 factHolderOriginal.push(element.flavor_text);
-                if (factHolder.includes(element.flavor_text.replace(/[\n\r\W]+/g, " ").replace(/pok mon/gi, "pokemon")  ) === false) {
-                    factHolder.push(element.flavor_text.replace(/[\n\r\W]+/g, " ").replace(/pok mon/gi, "pokemon"));
+                if (factHolder.includes(element.flavor_text.replace(/[\n\r\W\s]+/g, "").replace(/pok mon/gi, "pokemon").replace(/é/gi, "e").toLowerCase()) === false) {
+                    factHolder.push(element.flavor_text.replace(/[\n\r\W\s]+/g, "").replace(/pok mon/gi, "pokemon").replace(/é/gi, "e").toLowerCase());
+                    factHolderIndexes.push(factHolderOriginal.indexOf(element.flavor_text));
                 }
             }
         });                     //APPROXIMATE STRING MATCHING TO AVOID REPEATING SPEAKING OF STRINGS THAT ARE PRACTICALLY IDENTICAL BUT NOT ACTUALLY
         speakHolder = [];
-        console.log("Facts BEFORE De-duping:");
-        console.log(factHolderOriginal);
-        console.log("Facts AFTER De-duping (spoken facts):");
         factHolder.forEach(element => {
             if (!speakHolder.includes(element.replace(/\s+/g, "").toLowerCase())) {
-                speakHolder.push(element.replace(/\s+/g, "").toLowerCase());    
-                console.log(`Fact ${factHolder.indexOf(element)}: ${element}`);
-                katherine.say(
-                    element.toLowerCase(),
-                {
-                onStart:()=>{
-                    $(".soundwave").addClass("soundwaveWaving");
-                },
-                onEnd:()=> {
-                    $(".soundwave").removeClass("soundwaveWaving");
-                }
-            });
+                speakHolder.push(element.replace(/\s+/g, "").toLowerCase()); 
+            }
+        });
+        console.log("Facts BEFORE De-duping:");
+        console.log(factHolderOriginal);
+        console.log("Indexes of Non-dupe facts")
+        console.log(factHolderIndexes);
+        console.log("Non-dope facts (spoken facts):");  
+        spoken = [];
+        factHolderOriginal.forEach(element => {
+            if (factHolderIndexes.includes(factHolderOriginal.indexOf(element)) && !spoken.includes(factHolderOriginal.indexOf(element))) { 
+                console.log(`Fact ${factHolderOriginal.indexOf(element)}: ${element}`);
+                spoken.push(factHolderOriginal.indexOf(element));
+                facts.push(element);
             }
         });
         console.log("--------------------------------------");
         console.log("--------------------------------------");
+        $("#fact").prop("disabled", false);
+        $("#fact").text("Click to hear a different fact");
+        factsIndex = 0;
     }).fail((result)=> {
-        console.log("not working");
+        console.log("Pokemon facts API call not working.");
     });
 }
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -258,6 +269,9 @@ class PokemonClass {
     }
     /*------------------WHEN METHOD CALLED + BEFORE AJAX REQUEST IS DONE, DISPLAY "LOADING" TEXT/GIF-----*/
     retrievePokemon() { 
+        facts = [];
+        $("#fact").text("Facts Loading");
+        $("#fact").prop("disabled", true);
         katherine.shutUp();
         katherine.shutUp();
         stopWriting();
@@ -363,7 +377,7 @@ class PokemonClass {
                     if (pokemon[pokemon.indexOf("-") + 1] === "f" || pokemon[pokemon.indexOf("-") + 1] === "m") { //<-----(account for gendered pokemon)
                         $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`);
                         $("#screen").css("background-size", "150px 150px");
-                        self.data["imageUrl"] = `url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`;
+                        self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif`;
                         
                     }
                     else {
@@ -562,7 +576,6 @@ $("#index").click(event=> {
              $("#hpbar").removeClass("loading-stats");
              $("#dbar").removeClass("loading-stats");
              katherine.shutUp();
-             katherine.shutUp();
              trainerObj.get(pokemon); 
         });
         var name = $("<p></p>").addClass("pokemonSelectedText");
@@ -610,6 +623,31 @@ $("#indexed").click(event=>{
     pokemonSearch = new PokemonClass(randomNumberId);
     pokemonSearch.retrievePokemon();
 });
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+
+/*---------FACT BUTTON------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+$("#fact").click(()=>{
+    katherine.shutUp();
+    if (factsIndex === facts.length) {
+        factsIndex = 0;
+    }
+    console.log(facts[factsIndex]);
+    katherine.say(
+        facts[factsIndex],
+        {
+        onStart:()=>{
+            $(".soundwave").addClass("soundwaveWaving");
+            $("#fact").prop("disabled", true);
+        },
+        onEnd:()=> {
+            $(".soundwave").removeClass("soundwaveWaving");
+            $("#fact").prop("disabled", false);
+        }
+    });
+    factsIndex ++;
+});
+/*--------------------------------------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 
 
