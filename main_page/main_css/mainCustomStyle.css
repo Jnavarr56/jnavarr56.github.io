@@ -440,17 +440,18 @@ p {
   color: white;
   text-shadow: 0 0 40px gold, 0 0 140px gold, 0 0 40px gold, 0 0 140px gold;
   writing-mode: vertical-rl;
-  text-orientation: upright; }
+  text-orientation: upright;
+  margin: 0 auto; }
 
 #countbox {
   height: auto;
   width: 20%;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0 15px 15px 0;
-  margin: 0 auto;
   padding-top: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
   z-index: 5;
   position: absolute;
   top: 300px;

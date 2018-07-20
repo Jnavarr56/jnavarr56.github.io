@@ -508,6 +508,7 @@ p {
     @include textShadowA();
     writing-mode: vertical-rl;
     text-orientation: upright;
+    margin: 0 auto;
 }
 #countbox {
     height: auto;
@@ -516,11 +517,9 @@ p {
     background-color: rgba(0, 0, 0, .2);
 
     border-radius: 0 15px 15px 0;
-    margin: 0 auto;
     padding-top: 10px;
 
-    display: flex;
-    justify-content: center;
+    @include displayFlexCenterAll();
     z-index: 5;
 
     position: absolute;

@@ -3,9 +3,6 @@ const katherine = new Artyom();
 katherine.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------STOP SPEAKING IF NEW PAGE OR REFRESH-------------------------------------------------------------------*/
-katherine.shutUp(); 
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*-----------------------------------------------------GIVE VARIABLE GLOBAL SCOPE-----------------------------------------------------------------------------*/
 let pokemonSearch;
@@ -37,6 +34,7 @@ class TrainerClass {
         this.array = pokeArray;
     }
     get(pokemonObjToGet){
+        katherine.shutUp();
         katherine.shutUp();
         stopWriting();
         $("#abar").removeClass("loading-stats");
@@ -94,8 +92,10 @@ class TrainerClass {
                     $("#dbar").css("background-color", "green");                
                 }  
                 $("#screen").css("background", `rgba(0,0,0,.2) url('${element.imageUrl}') no-repeat center`);
-                $("#screen").css("background-size", "50%");
+                $("#screen").css("background-size", "150px 150px");
                 katherine.say(`${element.name} is number ${indexOfIndexedPokemon + 1} in your array of indexed pokemon.`);
+                katherine.shutUp();
+                katherine.shutUp();
                 getPokeBio(element.name);
             }
         });
@@ -105,7 +105,6 @@ class TrainerClass {
         pokeArray = [];
         this.array = pokeArray;
         return(this.array);
-        
     }
 }
 let trainerObj = new TrainerClass(pokeArray);
@@ -113,24 +112,32 @@ let trainerObj = new TrainerClass(pokeArray);
 
 /*-----------------------------------------------------GLOBAL AJAX FUNCTION TO RETRIEVE AND SPEAK POKEMON FACTS-----------------------------------------------*/
 let getPokeBio = (pokemonname) => {
+    console.log("Get Poke Bio Function Activated");
+    katherine.shutUp();
+    katherine.shutUp();
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-species/" + pokemonname
     }).done((result)=>{
+        var factHolderOriginal = [];
         var factHolder = [];
         result.flavor_text_entries.forEach(element=>{
             if (element.language.name === "en") {
-                if (factHolder.includes(element.flavor_text) === false) {
-                    factHolder.push(element.flavor_text.replace(/[\n\r]/g, " "));
+                factHolderOriginal.push(element.flavor_text);
+                if (factHolder.includes(element.flavor_text.replace(/[\n\r\W]+/g, " ").replace(/pok mon/gi, "pokemon")  ) === false) {
+                    factHolder.push(element.flavor_text.replace(/[\n\r\W]+/g, " ").replace(/pok mon/gi, "pokemon"));
                 }
             }
-        });
-        console.log(factHolder);
+        });                     //APPROXIMATE STRING MATCHING TO AVOID REPEATING SPEAKING OF STRINGS THAT ARE PRACTICALLY IDENTICAL BUT NOT ACTUALLY
         speakHolder = [];
+        console.log("Facts BEFORE De-duping:");
+        console.log(factHolderOriginal);
+        console.log("Facts AFTER De-duping (spoken facts):");
         factHolder.forEach(element => {
-            if (!speakHolder.includes(element.replace(/\s/g, "").toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,""))) {
-                speakHolder.push(element.replace(/\s/g, "").toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g,""));    
+            if (!speakHolder.includes(element.replace(/\s+/g, "").toLowerCase())) {
+                speakHolder.push(element.replace(/\s+/g, "").toLowerCase());    
+                console.log(`Fact ${factHolder.indexOf(element)}: ${element}`);
                 katherine.say(
-                    element,
+                    element.toLowerCase(),
                 {
                 onStart:()=>{
                     $(".soundwave").addClass("soundwaveWaving");
@@ -141,6 +148,8 @@ let getPokeBio = (pokemonname) => {
             });
             }
         });
+        console.log("--------------------------------------");
+        console.log("--------------------------------------");
     }).fail((result)=> {
         console.log("not working");
     });
@@ -148,8 +157,9 @@ let getPokeBio = (pokemonname) => {
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*-----------------------------------------------------ON LOAD: SET OPACITY ANIMATION, BODY COLOR, INNERTEXT GEOLOCATION -------------------------------------*/
-
 $(document).ready(()=>{
+    katherine.shutUp();
+    katherine.shutUp();
     katherine.shutUp();
     $("#inputsearch").focus();
     setTimeout(()=> {
@@ -239,7 +249,7 @@ let stopWriting = () => {
     clearInterval(writeDef);
 }
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-katherine.shutUp();
+
 /*---#################################-----DEFINE GLOBAL POKEMON CLASS THAT TAKES NAME AS PARAMETER AND PERFORMS AJAX REQUEST-----#################################----*/
 class PokemonClass {
     constructor(pokemonName) {
@@ -248,6 +258,7 @@ class PokemonClass {
     }
     /*------------------WHEN METHOD CALLED + BEFORE AJAX REQUEST IS DONE, DISPLAY "LOADING" TEXT/GIF-----*/
     retrievePokemon() { 
+        katherine.shutUp();
         katherine.shutUp();
         stopWriting();
         $("#abar").removeClass("loading-stats");
@@ -282,8 +293,11 @@ class PokemonClass {
             url: "https://pokeapi.co/api/v2/pokemon/" + this.pokemonName
         }).done(
             (result)=> {
+                console.log("--------------------------------------");
+                console.log("--------------------------------------");
                 console.log(`${result.species.name.charAt(0).toUpperCase() + result.species.name.slice(1)} API Object:`);
                 console.log(result);
+                katherine.shutUp();
                 katherine.shutUp(); //<-----END SPEAKING OF LAST POKEMON'S STATISTICS IF THERE WAS ONE
 
                 $("#other-stats-holder").css("background", "initial");
@@ -308,7 +322,7 @@ class PokemonClass {
                 var pokeID = result.id;
                 /*-------------------------------------------*/
 
-                getPokeBio(pokemon);
+                
                 
                 self.data["name"] = pokemon;        //<-----SET VALUE AS PROPERTY CALLED "NAME" IN POKEMON OBJECT (A)
                 self.data["height"] = pokeHeight;   //<-----SET VALUE AS PROPERTY CALLED "HEIGHT" IN POKEMON OBJECT (A)
@@ -331,39 +345,39 @@ class PokemonClass {
                 }
                 self.data["otherStats"] = pokeOtherStats;
                 /*----------------------------------------------------------------------------------------------------------------------------------*/
-                console.log(pokemon.indexOf("-")); 
+                
                 /*-------IF POKEMON NUMBER <= 721 THEN SET #SCREEN BACKGROUND IMAGE (POKEMON PROFILE PIC) AS GIF FROM THIS WEBSITE------------------*/
                 if (pokeID <= 721 && pokemon.indexOf("-") === -1) {
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
-                    $("#screen").css("background-size", "35%");
+                    $("#screen").css("background-size", "150px 150px");
                     self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`; 
-                    console.log(1);
+                    
                 }
                 else if (pokeID > 721 && pokemon.indexOf("-") === -1) {   //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
                     $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
-                    $("#screen").css("background-size", "250px 250px");
+                    $("#screen").css("background-size", "initial");
                     self.data["imageUrl"] = pokeImage;
-                    console.log(2);
+                    
                 }
                 else if (pokeID <= 721 && pokemon.indexOf("-") !== -1) { 
                     if (pokemon[pokemon.indexOf("-") + 1] === "f" || pokemon[pokemon.indexOf("-") + 1] === "m") { //<-----(account for gendered pokemon)
                         $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`);
-                        $("#screen").css("background-size", "35%");
+                        $("#screen").css("background-size", "150px 150px");
                         self.data["imageUrl"] = `url(http://www.pokestadium.com/sprites/xy/${pokemon.slice(0, pokemon.indexOf("-")) + pokemon[pokemon.indexOf("-")+1]}.gif) no-repeat center`;
-                        console.log(3);
+                        
                     }
                     else {
                         $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
-                        $("#screen").css("background-size", "35%");
+                        $("#screen").css("background-size", "150px 150px");
                         self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
-                        console.log(4);
+                        
                     }
                 }
                 else if (pokeID > 721 && pokemon.indexOf("-") !== -1) { //<-----ELSE SET POKEMON PROFILE PIC AS IMG FROM URL FOUND IN API OBJECT
-                    $("#screen").css("background", `rgba(0,0,0,.2 ) url(http://www.pokestadium.com/sprites/xy/${pokemon}.gif) no-repeat center`);
-                    $("#screen").css("background-size", "35%");
-                    self.data["imageUrl"] = `http://www.pokestadium.com/sprites/xy/${pokemon}.gif`;
-                    console.log(5);
+                    $("#screen").css("background", `rgba(0,0,0,.2 ) url(${pokeImage}) no-repeat center`);
+                    $("#screen").css("background-size", "initial");
+                    self.data["imageUrl"] = pokeImage;
+                    
                 }
                 /*----------------------------------------------------------------------------------------------------------------------------------*/
     
@@ -461,6 +475,7 @@ class PokemonClass {
                     },  
                     onEnd:()=> { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
                         $(".soundwave").removeClass("soundwaveWaving");
+                        getPokeBio(pokemon);
                     }
                 }); 
                 /*---------------------------------------------------------------------------------------------------*/
@@ -547,7 +562,8 @@ $("#index").click(event=> {
              $("#hpbar").removeClass("loading-stats");
              $("#dbar").removeClass("loading-stats");
              katherine.shutUp();
-            trainerObj.get(pokemon); 
+             katherine.shutUp();
+             trainerObj.get(pokemon); 
         });
         var name = $("<p></p>").addClass("pokemonSelectedText");
         name.text(`${pokemon}`);
@@ -582,11 +598,13 @@ $("#clear").click(event=>{
     $("#indexedPokemon").empty();
     console.log("Pokemon Objects Array After Emptying of All Pokemon Objects (using 'Trainer Obj'.reset() method, also displayed with this method):");
     console.log(trainerObj.reset());
+    $("#count").text(`Count ${pokeArray.length}`);
 });
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------ON CLICK: PASS RANDOM INTEGER BETWEEN 1 AND 802 TO POKEMON CLASS CONSTRUCTOR-------------------------------------------*/
 $("#indexed").click(event=>{
+    katherine.shutUp();
     katherine.shutUp();
     var randomNumberId = Math.ceil(Math.random()*802);
     pokemonSearch = new PokemonClass(randomNumberId);
