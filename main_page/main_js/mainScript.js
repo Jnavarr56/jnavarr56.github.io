@@ -567,7 +567,7 @@ $("#index").click(event=> {
              $("#hpbar").removeClass("loading-stats");
              $("#dbar").removeClass("loading-stats");
              trainerObj.get(pokemon);
-            katherine.say(`${pokemon} is number ${indexOfIndexedPokemon} in your array of indexed pokemon`);
+            katherine.say(`${pokemon} is number ${indexOfIndexedPokemon+1} in your array of indexed pokemon`);
              
         });
         var name = $("<p></p>").addClass("pokemonSelectedText");
