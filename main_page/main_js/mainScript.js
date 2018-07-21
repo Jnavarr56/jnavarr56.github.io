@@ -108,19 +108,10 @@ let trainerObj = new TrainerClass(pokeArray);
 
 /*-----------------------------------------------------GLOBAL AJAX FUNCTION TO RETRIEVE AND SPEAK POKEMON FACTS-----------------------------------------------*/
 let getPokeBio = (pokemonname) => {
-    katherine.say(
-        `${pokemonname} is number ${indexOfIndexedPokemon + 1} in your array of indexed pokemon.` 
-    , {
-        onStart:()=> {  //<---WHEN START SPEAKING APPLY SOUNDWAVE ANIMATION CLASS TO SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
-            $(".soundwave").addClass("soundwaveWaving");
-        },  
-        onEnd:()=> { //<---WHEN STOP SPEAKING REMOVE SOUNDWAVE ANIMATION CLASS FRM SOUNDWAVE DIVS (SYNCS UP SPEECH WITH A "SOUNDWAVE")
-            $(".soundwave").removeClass("soundwaveWaving");
-            katherine.shutUp();
-        }
-    }); 
     facts = [];
     console.log("Get Poke Bio Function Activated");
+    $("#factText").text("Loading Facts Please Wait");
+    $("#fact").prop("disabled", true);
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-species/" + pokemonname
     }).done((result)=>{
@@ -159,6 +150,7 @@ let getPokeBio = (pokemonname) => {
         console.log("--------------------------------------");
         console.log("--------------------------------------");
         $("#fact").prop("disabled", false);
+        $("#factText").text("Click to hear a different fact");
         $("#fact").css("background", "rgba(0,0,0,.4)");
         factsIndex = 0;
     }).fail((result)=> {
@@ -570,11 +562,13 @@ $("#index").click(event=> {
         var pokemon = pokemonSearch.data.name;
         box.click(()=>{  //<--ON CLICK: "GET" POKEMON OBJ AND CONSOLE LOG IT
             stopWriting();
+            katherine.shutUp();
              $("#abar").removeClass("loading-stats");
              $("#hpbar").removeClass("loading-stats");
              $("#dbar").removeClass("loading-stats");
-             katherine.shutUp();
-             trainerObj.get(pokemon); 
+             trainerObj.get(pokemon);
+            katherine.say(`${pokemon} is number ${indexOfIndexedPokemon} in your array of indexed pokemon`);
+             
         });
         var name = $("<p></p>").addClass("pokemonSelectedText");
         name.text(`${pokemon}`);
@@ -614,7 +608,7 @@ $("#clear").click(event=>{
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------ON CLICK: PASS RANDOM INTEGER BETWEEN 1 AND 802 TO POKEMON CLASS CONSTRUCTOR-------------------------------------------*/
-$("#indexed").click(event=>{
+$("#random").click(event=>{
     katherine.shutUp();
     katherine.shutUp();
     var randomNumberId = Math.ceil(Math.random()*802);
@@ -632,7 +626,7 @@ $("#fact").click(()=>{
     }
     console.log(facts[factsIndex]);
     katherine.say(
-        facts[factsIndex],
+        facts[factsIndex].toLowerCase(),
         {
         onStart:()=>{
             $(".soundwave").addClass("soundwaveWaving");
