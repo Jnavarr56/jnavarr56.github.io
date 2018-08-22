@@ -9,7 +9,7 @@ This is a dynamic dashboard that uses the official pokemon API to present genera
 
 # Deployed Using Github Pages
 
-  - jnavarr56.github.io/mainPage.html
+  - jnavarr56.github.io/
 
 ### How to Use
 
